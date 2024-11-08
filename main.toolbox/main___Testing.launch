@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.lamport.tla.toolbox.tool.tlc.modelCheck">
+    <stringAttribute key="configurationName" value="Testing"/>
+    <intAttribute key="distributedFPSetCount" value="0"/>
+    <stringAttribute key="distributedNetworkInterface" value="192.168.56.1"/>
+    <intAttribute key="distributedNodesCount" value="1"/>
+    <stringAttribute key="distributedTLC" value="off"/>
+    <intAttribute key="fpIndex" value="54"/>
+    <intAttribute key="maxHeapSize" value="10"/>
+    <stringAttribute key="modelBehaviorInit" value=""/>
+    <stringAttribute key="modelBehaviorNext" value=""/>
+    <stringAttribute key="modelBehaviorSpec" value=""/>
+    <intAttribute key="modelBehaviorSpecType" value="0"/>
+    <stringAttribute key="modelBehaviorVars" value="r, ho, Proc"/>
+    <stringAttribute key="modelComments" value=""/>
+    <booleanAttribute key="modelCorrectnessCheckDeadlock" value="true"/>
+    <listAttribute key="modelCorrectnessInvariants"/>
+    <listAttribute key="modelCorrectnessProperties"/>
+    <intAttribute key="modelEditorOpenTabs" value="10"/>
+    <stringAttribute key="modelExpressionEval" value="HOset(Processes,Af)"/>
+    <stringAttribute key="modelParameterActionConstraint" value=""/>
+    <listAttribute key="modelParameterConstants">
+        <listEntry value="Processes;;{p1, p2, p3};1;0"/>
+        <listEntry value="V;;{1,2,3};0;0"/>
+    </listAttribute>
+    <stringAttribute key="modelParameterContraint" value="r = 0"/>
+    <listAttribute key="modelParameterDefinitions">
+        <listEntry value="NULL;;NULL;1;0"/>
+    </listAttribute>
+    <stringAttribute key="modelParameterModelValues" value="{}"/>
+    <stringAttribute key="modelParameterNewDefinitions" value="Init    == ( p1 :&gt; [x |-&gt; 1, v |-&gt; NULL,  d |-&gt; NULL] @@&#13;&#10;             p2 :&gt; [x |-&gt; 2, v |-&gt; NULL,  d |-&gt; NULL] @@&#13;&#10;             p3 :&gt; [x |-&gt; 3, v |-&gt; NULL,  d |-&gt; NULL] )"/>
+    <intAttribute key="modelVersion" value="20191005"/>
+    <intAttribute key="numberOfWorkers" value="8"/>
+    <stringAttribute key="result.mail.address" value=""/>
+    <stringAttribute key="specName" value="main"/>
+    <stringAttribute key="tlcResourcesProfile" value="local custom"/>
+</launchConfiguration>
