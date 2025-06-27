@@ -1,0 +1,97 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 64 and seed -9058630952294390893 with 8 workers on 8 cores with 1753MB heap and 3942MB offheap memory [pid: 23188] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\FullModel\MC.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\FullModel\main.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\TLC.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\FullModel\HeardOf.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\FullModel\RoundStructure.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\FullModel\UV.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Naturals.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\FiniteSets.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\FullModel\ExtendedSequences.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Integers.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Sequences.tla
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module HeardOf
+Semantic processing of module TLC
+Semantic processing of module ExtendedSequences
+Semantic processing of module UV
+Semantic processing of module RoundStructure
+Semantic processing of module main
+Semantic processing of module MC
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2025-05-04 20:45:52)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2269:0 @!@!@
+Computed 2 initial states...
+@!@!@ENDMSG 2269 @!@!@
+@!@!@STARTMSG 2269:0 @!@!@
+Computed 4 initial states...
+@!@!@ENDMSG 2269 @!@!@
+@!@!@STARTMSG 2269:0 @!@!@
+Computed 8 initial states...
+@!@!@ENDMSG 2269 @!@!@
+@!@!@STARTMSG 2269:0 @!@!@
+Computed 16 initial states...
+@!@!@ENDMSG 2269 @!@!@
+@!@!@STARTMSG 2269:0 @!@!@
+Computed 32 initial states...
+@!@!@ENDMSG 2269 @!@!@
+@!@!@STARTMSG 2269:0 @!@!@
+Computed 64 initial states...
+@!@!@ENDMSG 2269 @!@!@
+@!@!@STARTMSG 2269:0 @!@!@
+Computed 128 initial states...
+@!@!@ENDMSG 2269 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 256 distinct states generated at 2025-05-04 20:45:55.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(2) at 2025-05-04 20:45:58: 1,502 states generated (1,502 s/min), 597 distinct states found (597 ds/min), 573 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(3) at 2025-05-04 20:46:58: 40,813 states generated (39,311 s/min), 812 distinct states found (215 ds/min), 487 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(3) at 2025-05-04 20:47:58: 53,195 states generated (12,382 s/min), 827 distinct states found (15 ds/min), 245 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(4) at 2025-05-04 20:48:58: 71,226 states generated (18,031 s/min), 887 distinct states found (60 ds/min), 49 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2193:0 @!@!@
+Model checking completed. No error has been found.
+  Estimates of the probability that TLC did not check all reachable states
+  because two distinct states had the same fingerprint:
+  calculated (optimistic):  val = 3.4E-12
+@!@!@ENDMSG 2193 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(4) at 2025-05-04 20:49:18: 71,283 states generated (20,723 s/min), 887 distinct states found (257 ds/min), 0 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+71283 states generated, 887 distinct states found, 0 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 4.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2268:0 @!@!@
+The average outdegree of the complete state graph is 0 (minimum is 0, the maximum 31 and the 95th percentile is 1).
+@!@!@ENDMSG 2268 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 206385ms at (2025-05-04 20:49:18)
+@!@!@ENDMSG 2186 @!@!@

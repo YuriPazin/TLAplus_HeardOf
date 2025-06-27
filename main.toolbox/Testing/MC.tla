@@ -7,37 +7,37 @@ p1, p2, p3
 ----
 
 \* MV CONSTANT definitions Processes
-const_1731088733869629000 == 
+const_1746403861075102000 == 
 {p1, p2, p3}
 ----
 
 \* New definitions @modelParameterNewDefinitions
-Init    == ( p1 :> [x |-> 1, v |-> NULL,  d |-> NULL] @@
-             p2 :> [x |-> 2, v |-> NULL,  d |-> NULL] @@
-             p3 :> [x |-> 3, v |-> NULL,  d |-> NULL] )
+InitTEST    == ( p1 :> [x |-> 0, v |-> NULL,  d |-> NULL] @@
+             p2 :> [x |-> 1, v |-> NULL,  d |-> NULL] @@
+             p3 :> [x |-> 2, v |-> NULL,  d |-> NULL] )
 ----
 \* CONSTANT definitions @modelParameterConstants:1V
-const_1731088733869630000 == 
+const_1746403861075103000 == 
 {1,2,3}
 ----
 
 \* Constant expression definition @modelExpressionEval
-const_expr_1731088733869632000 == 
-HOset(Processes,Af)
+const_expr_1746403861075105000 == 
+StateSet(InitTEST,HO,0)
 ----
 
 \* Constant expression ASSUME statement @modelExpressionEval
-ASSUME PrintT(<<"$!@$!@$!@$!@$!",const_expr_1731088733869632000>>)
+ASSUME PrintT(<<"$!@$!@$!@$!@$!",const_expr_1746403861075105000>>)
 ----
 
 \* INIT definition @modelBehaviorNoSpec:0
-init_1731088733869633000 ==
+init_1746403861075106000 ==
 FALSE/\r = 0
 ----
 \* NEXT definition @modelBehaviorNoSpec:0
-next_1731088733869634000 ==
+next_1746403861075107000 ==
 FALSE/\r' = r
 ----
 ==========================================================================================
 \* Modification History
-\* Created Fri Nov 08 14:58:53 BRT 2024 by yuri
+\* Created Sun May 04 21:11:01 BRT 2025 by yuri

@@ -2,7 +2,7 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 54 and seed -3249022140162684791 with 8 workers on 8 cores with 700MB heap and 64MB offheap memory [pid: 10708] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, NoopFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 98 and seed 3751234853239529054 with 8 workers on 8 cores with 700MB heap and 64MB offheap memory [pid: 19536] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, NoopFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -11,13 +11,13 @@ Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\Testing\MC.tla
 Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\Testing\main.tla
 Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\TLC.tla
 Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\Testing\HeardOf.tla
-Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\Testing\Algorithm.tla
-Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Integers.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\Testing\RoundStructure.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\Testing\UV.tla
 Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Naturals.tla
 Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\FiniteSets.tla
-Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Sequences.tla
 Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\Testing\ExtendedSequences.tla
-Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\Testing\UniformVoting.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Integers.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Sequences.tla
 Semantic processing of module Naturals
 Semantic processing of module Integers
 Semantic processing of module Sequences
@@ -25,86 +25,181 @@ Semantic processing of module FiniteSets
 Semantic processing of module HeardOf
 Semantic processing of module TLC
 Semantic processing of module ExtendedSequences
-Semantic processing of module UniformVoting
-Semantic processing of module Algorithm
+Semantic processing of module UV
+Semantic processing of module RoundStructure
 Semantic processing of module main
 Semantic processing of module MC
 @!@!@STARTMSG 2219:0 @!@!@
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2024-11-08 14:58:54)
+Starting... (2025-05-03 19:53:45)
 @!@!@ENDMSG 2185 @!@!@
 << "$!@$!@$!@$!@$!",
-   { (p1 :> {p1, p2} @@ p2 :> {p1, p2} @@ p3 :> {p1, p2}),
-     (p1 :> {p1, p2} @@ p2 :> {p1, p2} @@ p3 :> {p1, p3}),
-     (p1 :> {p1, p2} @@ p2 :> {p1, p2} @@ p3 :> {p2, p3}),
-     (p1 :> {p1, p2} @@ p2 :> {p1, p2} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p1, p2} @@ p2 :> {p1, p3} @@ p3 :> {p1, p2}),
-     (p1 :> {p1, p2} @@ p2 :> {p1, p3} @@ p3 :> {p1, p3}),
-     (p1 :> {p1, p2} @@ p2 :> {p1, p3} @@ p3 :> {p2, p3}),
-     (p1 :> {p1, p2} @@ p2 :> {p1, p3} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p1, p2} @@ p2 :> {p2, p3} @@ p3 :> {p1, p2}),
-     (p1 :> {p1, p2} @@ p2 :> {p2, p3} @@ p3 :> {p1, p3}),
-     (p1 :> {p1, p2} @@ p2 :> {p2, p3} @@ p3 :> {p2, p3}),
-     (p1 :> {p1, p2} @@ p2 :> {p2, p3} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p1, p2} @@ p2 :> {p1, p2, p3} @@ p3 :> {p1, p2}),
-     (p1 :> {p1, p2} @@ p2 :> {p1, p2, p3} @@ p3 :> {p1, p3}),
-     (p1 :> {p1, p2} @@ p2 :> {p1, p2, p3} @@ p3 :> {p2, p3}),
-     (p1 :> {p1, p2} @@ p2 :> {p1, p2, p3} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p1, p3} @@ p2 :> {p1, p2} @@ p3 :> {p1, p2}),
-     (p1 :> {p1, p3} @@ p2 :> {p1, p2} @@ p3 :> {p1, p3}),
-     (p1 :> {p1, p3} @@ p2 :> {p1, p2} @@ p3 :> {p2, p3}),
-     (p1 :> {p1, p3} @@ p2 :> {p1, p2} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p1, p3} @@ p2 :> {p1, p3} @@ p3 :> {p1, p2}),
-     (p1 :> {p1, p3} @@ p2 :> {p1, p3} @@ p3 :> {p1, p3}),
-     (p1 :> {p1, p3} @@ p2 :> {p1, p3} @@ p3 :> {p2, p3}),
-     (p1 :> {p1, p3} @@ p2 :> {p1, p3} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p1, p3} @@ p2 :> {p2, p3} @@ p3 :> {p1, p2}),
-     (p1 :> {p1, p3} @@ p2 :> {p2, p3} @@ p3 :> {p1, p3}),
-     (p1 :> {p1, p3} @@ p2 :> {p2, p3} @@ p3 :> {p2, p3}),
-     (p1 :> {p1, p3} @@ p2 :> {p2, p3} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p1, p3} @@ p2 :> {p1, p2, p3} @@ p3 :> {p1, p2}),
-     (p1 :> {p1, p3} @@ p2 :> {p1, p2, p3} @@ p3 :> {p1, p3}),
-     (p1 :> {p1, p3} @@ p2 :> {p1, p2, p3} @@ p3 :> {p2, p3}),
-     (p1 :> {p1, p3} @@ p2 :> {p1, p2, p3} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p2, p3} @@ p2 :> {p1, p2} @@ p3 :> {p1, p2}),
-     (p1 :> {p2, p3} @@ p2 :> {p1, p2} @@ p3 :> {p1, p3}),
-     (p1 :> {p2, p3} @@ p2 :> {p1, p2} @@ p3 :> {p2, p3}),
-     (p1 :> {p2, p3} @@ p2 :> {p1, p2} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p2, p3} @@ p2 :> {p1, p3} @@ p3 :> {p1, p2}),
-     (p1 :> {p2, p3} @@ p2 :> {p1, p3} @@ p3 :> {p1, p3}),
-     (p1 :> {p2, p3} @@ p2 :> {p1, p3} @@ p3 :> {p2, p3}),
-     (p1 :> {p2, p3} @@ p2 :> {p1, p3} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p2, p3} @@ p2 :> {p2, p3} @@ p3 :> {p1, p2}),
-     (p1 :> {p2, p3} @@ p2 :> {p2, p3} @@ p3 :> {p1, p3}),
-     (p1 :> {p2, p3} @@ p2 :> {p2, p3} @@ p3 :> {p2, p3}),
-     (p1 :> {p2, p3} @@ p2 :> {p2, p3} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p2, p3} @@ p2 :> {p1, p2, p3} @@ p3 :> {p1, p2}),
-     (p1 :> {p2, p3} @@ p2 :> {p1, p2, p3} @@ p3 :> {p1, p3}),
-     (p1 :> {p2, p3} @@ p2 :> {p1, p2, p3} @@ p3 :> {p2, p3}),
-     (p1 :> {p2, p3} @@ p2 :> {p1, p2, p3} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p1, p2} @@ p3 :> {p1, p2}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p1, p2} @@ p3 :> {p1, p3}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p1, p2} @@ p3 :> {p2, p3}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p1, p2} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p1, p3} @@ p3 :> {p1, p2}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p1, p3} @@ p3 :> {p1, p3}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p1, p3} @@ p3 :> {p2, p3}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p1, p3} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p2, p3} @@ p3 :> {p1, p2}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p2, p3} @@ p3 :> {p1, p3}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p2, p3} @@ p3 :> {p2, p3}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p2, p3} @@ p3 :> {p1, p2, p3}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p1, p2, p3} @@ p3 :> {p1, p2}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p1, p2, p3} @@ p3 :> {p1, p3}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p1, p2, p3} @@ p3 :> {p2, p3}),
-     (p1 :> {p1, p2, p3} @@ p2 :> {p1, p2, p3} @@ p3 :> {p1, p2, p3}) } >>
+   { ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> 0, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> 1, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 2, v |-> 2, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> 0, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> 0, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> 0, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> 1, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 2, v |-> 2, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> 1, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p3 :> [x |-> 2, v |-> 2, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> 0, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> 0, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> 0, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> 0, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> 0, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 0, v |-> 0, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> 0, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> 0, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> 1, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 2, v |-> 2, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> 1, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 2, v |-> 2, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> 1, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p2 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p3 :> [x |-> 2, v |-> 2, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> 1, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> 1, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> 1, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> 1, d |-> NULL] ),
+     ( p1 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p2 :> [x |-> 0, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 2, v |-> 2, d |-> NULL] ),
+     ( p1 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p2 :> [x |-> 1, v |-> NULL, d |-> NULL] @@
+       p3 :> [x |-> 2, v |-> 2, d |-> NULL] ),
+     ( p1 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p2 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p3 :> [x |-> 0, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p2 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p3 :> [x |-> 1, v |-> NULL, d |-> NULL] ),
+     ( p1 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p2 :> [x |-> 2, v |-> 2, d |-> NULL] @@
+       p3 :> [x |-> 2, v |-> 2, d |-> NULL] ) } >>
 @!@!@STARTMSG 2189:0 @!@!@
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 0 distinct states generated at 2024-11-08 14:58:55.
+Finished computing initial states: 0 distinct states generated at 2025-05-03 19:53:45.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2193:0 @!@!@
 Model checking completed. No error has been found.
@@ -113,7 +208,7 @@ Model checking completed. No error has been found.
   calculated (optimistic):  val = 0.0
 @!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(1) at 2024-11-08 14:58:55: 0 states generated (0 s/min), 0 distinct states found (0 ds/min), 0 states left on queue.
+Progress(1) at 2025-05-03 19:53:45: 0 states generated (0 s/min), 0 distinct states found (0 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
 0 states generated, 0 distinct states found, 0 states left on queue.
@@ -122,5 +217,5 @@ Progress(1) at 2024-11-08 14:58:55: 0 states generated (0 s/min), 0 distinct sta
 The depth of the complete state graph search is 1.
 @!@!@ENDMSG 2194 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 1346ms at (2024-11-08 14:58:55)
+Finished in 826ms at (2025-05-03 19:53:45)
 @!@!@ENDMSG 2186 @!@!@

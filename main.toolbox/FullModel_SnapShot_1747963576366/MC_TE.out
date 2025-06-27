@@ -1,0 +1,164 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 2 and seed -1617717192348470647 with 8 workers on 8 cores with 1753MB heap and 3942MB offheap memory [pid: 25876] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\FullModel\MC.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\FullModel\main.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\TLC.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\FullModel\HeardOf.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\FullModel\RoundStructure.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\FullModel\UV.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Naturals.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\FiniteSets.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\main.toolbox\FullModel\ExtendedSequences.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Integers.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Sequences.tla
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module HeardOf
+Semantic processing of module TLC
+Semantic processing of module ExtendedSequences
+Semantic processing of module UV
+Semantic processing of module RoundStructure
+Semantic processing of module main
+Semantic processing of module MC
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2025-05-22 22:26:04)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2212:0 @!@!@
+Implied-temporal checking--satisfiability problem has 1 branches.
+@!@!@ENDMSG 2212 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2269:0 @!@!@
+Computed 2 initial states...
+@!@!@ENDMSG 2269 @!@!@
+@!@!@STARTMSG 2269:0 @!@!@
+Computed 4 initial states...
+@!@!@ENDMSG 2269 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 8 distinct states generated at 2025-05-22 22:26:06.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2192:0 @!@!@
+Checking temporal properties for the current state space with 29 total distinct states at (2025-05-22 22:26:14)
+@!@!@ENDMSG 2192 @!@!@
+@!@!@STARTMSG 2116:1 @!@!@
+Temporal properties were violated.
+
+@!@!@ENDMSG 2116 @!@!@
+@!@!@STARTMSG 2264:1 @!@!@
+The following behavior constitutes a counter-example:
+
+@!@!@ENDMSG 2264 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+1: <Initial predicate>
+/\ r = 0
+/\ ProcState = ( p1 :> [v |-> NULL, d |-> NULL, x |-> 0] @@
+  p2 :> [v |-> NULL, d |-> NULL, x |-> 0] @@
+  p3 :> [v |-> NULL, d |-> NULL, x |-> 1] )
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+2: <StepNoSplit line 24, col 17 to line 25, col 58 of module main>
+/\ r = 1
+/\ ProcState = ( p1 :> [v |-> NULL, d |-> NULL, x |-> 0] @@
+  p2 :> [v |-> NULL, d |-> NULL, x |-> 0] @@
+  p3 :> [v |-> 1, d |-> NULL, x |-> 1] )
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2122:4 @!@!@
+1: Back to state: <StepNoSplit line 24, col 17 to line 25, col 58 of module main>
+
+@!@!@ENDMSG 2122 @!@!@
+@!@!@STARTMSG 2267:0 @!@!@
+Finished checking temporal properties in 00s at 2025-05-22 22:26:14
+@!@!@ENDMSG 2267 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2025-05-22 22:26:14
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<SpecInit line 20, col 1 to line 20, col 8 of module main>: 16:16
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 21, col 16 to line 21, col 46 of module main: 16
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 21, col 30 to line 21, col 46 of module main: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<StepNoSplit line 24, col 1 to line 24, col 11 of module main>: 22:139
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 24, col 20 to line 24, col 35 of module main: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 25, col 20 to line 25, col 58 of module main: 139
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 25, col 35 to line 25, col 58 of module main: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 20, col 33 to line 20, col 50 of module RoundStructure: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  ||line 21, col 25 to line 21, col 53 of module RoundStructure: 13:152
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 21, col 26 to line 21, col 42 of module RoundStructure: 2275
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 21, col 51 to line 21, col 52 of module RoundStructure: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 25, col 44 to line 25, col 52 of module main: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 25, col 54 to line 25, col 55 of module main: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 25, col 57 to line 25, col 57 of module main: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<Agreement line 36, col 1 to line 36, col 9 of module main>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 37, col 5 to line 39, col 66 of module main: 30
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 37, col 27 to line 39, col 66 of module main: 270
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 37, col 30 to line 37, col 53 of module main: 270
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 38, col 30 to line 38, col 53 of module main: 36
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 39, col 30 to line 39, col 66 of module main: 24
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 37, col 16 to line 37, col 24 of module main: 30
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2202:0 @!@!@
+End of statistics.
+@!@!@ENDMSG 2202 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(3) at 2025-05-22 22:26:14: 116 states generated (663 s/min), 30 distinct states found (171 ds/min), 20 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+116 states generated, 30 distinct states found, 20 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 10515ms at (2025-05-22 22:26:14)
+@!@!@ENDMSG 2186 @!@!@

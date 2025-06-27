@@ -30,7 +30,7 @@ StepUniform ==  /\ r' = (r + 1) % 2
 Spec == /\ SpecInit
         /\ [][StepNoSplit]_<<vars>>
         /\ WF_<<vars>>(StepNoSplit)
-        (* /\ WF_<<vars>>(StepUniform)*)
+        /\ WF_<<vars>>(StepUniform)
         
         
 Agreement == 

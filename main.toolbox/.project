@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>main</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>toolbox.builder.TLAParserBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>toolbox.natures.TLANature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>ExtendedSequences.tla</name>
+			<type>1</type>
+			<location>C:/Users/yuri/Desktop/Mestrado/toolbox/ExtendedSequences.tla</location>
+		</link>
+		<link>
+			<name>HeardOf.tla</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/HeardOf.tla</locationURI>
+		</link>
+		<link>
+			<name>RoundStructure.tla</name>
+			<type>1</type>
+			<location>C:/Users/yuri/Desktop/Mestrado/toolbox/RoundStructure.tla</location>
+		</link>
+		<link>
+			<name>UV.tla</name>
+			<type>1</type>
+			<location>C:/Users/yuri/Desktop/Mestrado/toolbox/UV.tla</location>
+		</link>
+		<link>
+			<name>main.tla</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/main.tla</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>
