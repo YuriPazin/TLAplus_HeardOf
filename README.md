@@ -1,5 +1,7 @@
 # TLA+ Framework for Round-Based Distributed Algorithms using the Heard-Of Model
+
 a
+
 This repository contains the TLA+ source code accompanying the [article](https://doi.org/10.5753/wtf.2025.9510):
 
 **"Um arcabouço em TLA+ para especificação e verificação de algoritmos distribuídos usando o modelo Heard-Of."**  
