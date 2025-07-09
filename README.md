@@ -55,7 +55,9 @@ If you use this framework in your work, please cite:
 
 > Pazin, Y. S., & Dotti, F. L. (2025). *Um arcabouço em TLA+ para especificação e verificação de algoritmos distribuídos usando o modelo Heard-Of.* [Article](https://doi.org/10.5753/wtf.2025.9510)
 
-- [2](<a name="HOarticle">) Charron-Bost, B., & Schiper, A. (2009). *The Heard-Of model: computing in distributed systems with benign faults.* Distributed Computing, 22(1). [https://doi.org/10.1007/s00446-009-0084-6](https://doi.org/10.1007/s00446-009-0084-6)
+<a name="HOarticle"></a>
+
+- [2]  Charron-Bost, B., & Schiper, A. (2009). *The Heard-Of model: computing in distributed systems with benign faults.* Distributed Computing, 22(1). [https://doi.org/10.1007/s00446-009-0084-6](https://doi.org/10.1007/s00446-009-0084-6)
 
 
 ## Future Work
