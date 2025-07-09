@@ -21,11 +21,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/BLV.tla</locationURI>
 		</link>
 		<link>
-			<name>ByzRoundStructure.tla</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/ByzRoundStructure.tla</locationURI>
-		</link>
-		<link>
 			<name>PeaseSet.tla</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/PeaseSet.tla</locationURI>

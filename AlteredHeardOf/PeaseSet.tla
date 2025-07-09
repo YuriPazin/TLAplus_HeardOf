@@ -13,9 +13,9 @@ SHO(ProcSet,u,S) == {p \in ProcSet: u[p] = S[p]}
 
 AHO(ProcSet,u,S) == {p \in ProcSet: u[p] # S[p]}
 
-P_alfa(ProcSet,HO,S) == n(AHO(ProcSet,HO,S)) <= 1 
+P_alfa(ProcSet,HO,S) == Cardinality(AHO(ProcSet,HO,S)) <= 1 
 
-SafeKernel(ProcSet,a) == {p \in SUBSET ProcSet: n(p) >= n(ProcSet) - a}
+SafeKernel(ProcSet,a) == {p \in SUBSET ProcSet: Cardinality(p) >= Cardinality(ProcSet) - a}
 
 SafeOrByz(p,HO,SafeSend,ValidMsgs) == IF p \in HO 
                                       THEN {SafeSend[p]}
@@ -35,7 +35,7 @@ RECURSIVE Join(_)
 JoinFunc(P,Q) == {{ p @@ q  :q \in Q}: p \in P}  
 
 Join(P) == LET xi == CHOOSE x \in P: TRUE
-           IN IF n(P) > 1
+           IN IF Cardinality(P) > 1
               THEN UNION JoinFunc(xi,Join(P\{xi}))
               ELSE xi
 
