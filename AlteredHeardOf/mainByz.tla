@@ -1,10 +1,15 @@
-------------------------------------- MODULE mainByz -------------------------------------
+-------------------------------- MODULE mainByz --------------------------------
+(******************************************************************************)
+(* TODO: Introduction to main module                                          *)
+(*                                                                            *)
+(*                                                                            *)
+(*                                                                            *)
+(******************************************************************************)
 
-EXTENDS  PeaseSet, ByzRoundStructure
+EXTENDS  PeaseSet, ByzRoundStructure , BLV \*BLV is The Algorithm to be verified 
 INSTANCE Integers
 INSTANCE FiniteSets
 INSTANCE Sequences
-INSTANCE ExtendedSequences 
 INSTANCE TLC
 
 CONSTANT Processes, Values
@@ -14,7 +19,7 @@ VARIABLES State, r
 Variables == <<State, r>>
 
 SpecInit == /\ r = 0
-            /\ State \in InitStateSet(Processes,Values)
+            /\ State \in Init(Processes,Values)
 
 SpecNext == /\ r' = (r + 1) % 2
             /\ State' \in NextStateSet(State,"HW",r)
@@ -30,7 +35,4 @@ Agreement == \A p,q \in Processes: \/ State[p]["d"] = NULL
 
 Termination == <>(\A p,q \in Processes: State[p]["d"] # NULL)
 
-==========================================================================================
-\* Modification History
-\* Last modified Thu Jul 03 12:05:38 BRT 2025 by yuri
-\* Created Mon Nov 11 21:43:03 BRT 2024 by yuri
+=============================================================================

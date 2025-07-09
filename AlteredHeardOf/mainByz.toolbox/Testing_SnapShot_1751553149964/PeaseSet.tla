@@ -1,8 +1,9 @@
 ------------------------------------ MODULE PeaseSet ------------------------------------
 
+INSTANCE ExtendedSequences
 LOCAL INSTANCE Integers
 LOCAL INSTANCE FiniteSets
-
+LOCAL INSTANCE HeardOf
 LOCAL INSTANCE TLC
 
 FullSet(ProcSet,ValidMsgs) == [ProcSet -> ValidMsgs]
@@ -40,5 +41,6 @@ Join(P) == LET xi == CHOOSE x \in P: TRUE
               ELSE xi
 
 TransmissionVectors(ProcSet,a,SafeSend,ValidMsgs) == UNION {Join(Perm(p)) :p \in SafeKernel_Msgs(ProcSet,a,SafeSend,ValidMsgs)} 
+
                                 
 ==========================================================================================

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>mainByz</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>toolbox.builder.TLAParserBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>toolbox.natures.TLANature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>BLV.tla</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/BLV.tla</locationURI>
+		</link>
+		<link>
+			<name>ByzRoundStructure.tla</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/ByzRoundStructure.tla</locationURI>
+		</link>
+		<link>
+			<name>PeaseSet.tla</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/PeaseSet.tla</locationURI>
+		</link>
+		<link>
+			<name>mainByz.tla</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/mainByz.tla</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>

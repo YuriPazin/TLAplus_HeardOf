@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>PeaseSet</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>toolbox.builder.TLAParserBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>toolbox.natures.TLANature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>AlgorithmByzantine.tla</name>
+			<type>1</type>
+			<location>C:/Users/yuri/Desktop/Mestrado/toolbox/AlgorithmByzantine.tla</location>
+		</link>
+		<link>
+			<name>ExtendedSequences.tla</name>
+			<type>1</type>
+			<location>C:/Users/yuri/Desktop/Mestrado/toolbox/ExtendedSequences.tla</location>
+		</link>
+		<link>
+			<name>HeardOf.tla</name>
+			<type>1</type>
+			<location>C:/Users/yuri/Desktop/Mestrado/toolbox/HeardOf.tla</location>
+		</link>
+		<link>
+			<name>PeaseSet.tla</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/PeaseSet.tla</locationURI>
+		</link>
+		<link>
+			<name>UniformVoting.tla</name>
+			<type>1</type>
+			<location>C:/Users/yuri/Desktop/Mestrado/toolbox/UniformVoting.tla</location>
+		</link>
+	</linkedResources>
+</projectDescription>
