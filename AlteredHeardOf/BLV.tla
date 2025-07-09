@@ -16,9 +16,11 @@ EXTENDS Naturals, FiniteSets
 (**************************************************************************)
 
 
+ 
+RoundsPerPhase == 3 
+ 
 \* The Init(P,V) expression returns the set of all possible initial states
 \* of the algorithm 
- 
 Init(P,V) == [P -> { [ vote    |-> initp     ,
                        ts      |-> 0         , 
                        history |-> {<<initp,0>>} ] : initp \in V } ]
