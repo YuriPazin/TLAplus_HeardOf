@@ -1,21 +1,17 @@
-# TLA+ Framework for Round-Based Distributed Algorithms using the Heard-Of Model
+# TLA+ Framework for Round-Based Fault-Tolerant Distributed Algorithms using the Heard-Of Model
 
-This repository contains the TLA+ source code accompanying the [article](https://doi.org/10.5753/wtf.2025.9510):
+This repository contains the TLA+ source code of the framework originally introduced in:
 
-**"Um arcabouço em TLA+ para especificação e verificação de algoritmos distribuídos usando o modelo Heard-Of."**  
-by *Yuri de Souza Pazin* and *Fernando Luis Dotti* – PUCRS (Brazil)
-
+> Pazin, Y. S., & Dotti, F. L. (2025). *Um arcabouço em TLA+ para especificação e verificação de algoritmos distribuídos usando o modelo Heard-Of.* [[1]](https://doi.org/10.5753/wtf.2025.9510)
 ---
 
 ## About
 
-This project implements a reusable framework in TLA+ for specifying and model checking fault-tolerant distributed algorithms. It is based on the [**Heard-Of model**](https://link.springer.com/content/pdf/10.1007/s00446-009-0084-6.pdf) [[2]](#HOarticle), which abstracts message delivery behavior to reason about consensus in a round-based distributed setting.
+This project implements a reusable framework in TLA+ for specifying and model checking fault-tolerant distributed algorithms. It is based on the **Heard-Of model** [[2]](#HOarticle), which abstracts message delivery behavior to reason about consensus in a round-based distributed setting.
 
 The abstraction provided by the Heard-Of model makes it particularly suitable for formal verification using model checking, helping mitigate state-space explosion.
 
 ---
-
-The Heard-Of model is a distributed computing model for assisting in constructing correctness proofs regarding round-based fault-tolerant distributed consensus algorithms. The model's high level of abstraction makes it useful in model checking, as it can mitigate the state-space explosion problem often encountered in model checking distributed algorithms.
 
 ## Purpose
 
@@ -49,15 +45,14 @@ The repository also includes fully executable TLC models for:
 - Performance comparison in terms of state space size and checking time with a [similar framework](https://dl.acm.org/doi/10.1007/978-3-642-04420-5_10)
 
 
-## Reference
+## References
 
-If you use this framework in your work, please cite:
+If you use this framework in your work, please cite our original article [[1]](https://doi.org/10.5753/wtf.2025.9510): <a name="FWarticle"></a>
 
-> Pazin, Y. S., & Dotti, F. L. (2025). *Um arcabouço em TLA+ para especificação e verificação de algoritmos distribuídos usando o modelo Heard-Of.* [Article](https://doi.org/10.5753/wtf.2025.9510)
+> Pazin, Y. S., & Dotti, F. L. (2025). *Um arcabouço em TLA+ para especificação e verificação de algoritmos distribuídos usando o modelo Heard-Of.*
 
-<a name="HOarticle"></a>
+<a name="HOarticle"></a> - [[2]](https://doi.org/10.1007/s00446-009-0084-6) Charron-Bost, B., & Schiper, A. (2009). *The Heard-Of model: computing in distributed systems with benign faults.* Distributed Computing, 22(1).
 
-- [2]  Charron-Bost, B., & Schiper, A. (2009). *The Heard-Of model: computing in distributed systems with benign faults.* Distributed Computing, 22(1). [https://doi.org/10.1007/s00446-009-0084-6](https://doi.org/10.1007/s00446-009-0084-6)
 
 
 ## Future Work
