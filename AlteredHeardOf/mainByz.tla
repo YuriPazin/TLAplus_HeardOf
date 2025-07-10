@@ -58,7 +58,7 @@ SpecInit == /\ r = 0
             /\ State \in Init(Processes,Values)
             
 
-SpecNext == /\ r' = (r + 1) % RoundsPerPhase
+SpecNext == /\ r' = (r + 1) % Phases
             /\ State' \in {
                             [p \in DOMAIN State |-> T(State[p],r,hw[p])]
                           : hw \in HW}
