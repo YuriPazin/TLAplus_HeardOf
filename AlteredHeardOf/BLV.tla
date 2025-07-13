@@ -15,6 +15,13 @@ EXTENDS Naturals, FiniteSets
 (* outdated information.                                                    *)
 (****************************************************************************)
 
+CONSTANTS 
+    Th,           \* Decision threshold (minimum number of votes required)
+    Alpha         \* Parameter for resilience (used to validate history)
+
+ASSUME Th \in Nat \ {0}
+ASSUME Alpha \in Nat
+
 Phases == 3     \* The number of phases of the algorithm
 
 \*  INITIAL STATES 
@@ -60,25 +67,40 @@ S(s,r) ==  CASE r = 0 -> [v       |-> s.vote   ,
                                       THEN s.vote 
                                       ELSE {}       ]
 
-           
-min(Set) == CHOOSE x \in Set:         \* Smallest element of a set,  
-                \A y \in Set: x <= y  \* used in FBLVT expression.
 
-FBLVT(s,r,M) == LET possibleV  == TRUE \*TODO
-                    confirmedV == TRUE \*TODO
-                IN  IF   Cardinality(confirmedV) >= 1
-                    THEN min(confirmedV)
-                    ELSE IF   TRUE \*TODO
-                         THEN TRUE \*TODO
-                         ELSE {} 
-                    
+\* Auxiliar Function: counts how many messages in M satisfy the given condition
+Count(M,cond(_)) ==
+    Cardinality({p \in DOMAIN M : cond(M[p])})
+
+\* Auxiliar Function: returns the messages in M that satisfy the given condition
+Set(M,cond(_)) ==
+    {p \in DOMAIN M : cond(M[p])}
+
+           
+\* Selection function F_BLVT, adapted from Algorithm 5 in the paper
+F_BLVT(M) ==
+    LET possibleV == {<<m.v, m.ts>>: m \in {mp \in {M[p] : p \in DOMAIN M}:
+            Count(M, LAMBDA mq :\/ mp.ts > mq.ts 
+                                \/ /\ mp.v  = mq.v 
+                                   /\ mp.ts = mq.ts )>= Th}}
+        
+        confirmedV == { <<v, ts>> \in possibleV: 
+            Count(M, LAMBDA mq : <<v, ts>> \in mq.history) > Alpha}
+    IN
+        IF   confirmedV # {} 
+        THEN CHOOSE v \in confirmedV : \A x \in confirmedV: v <= x  
+        ELSE IF   Count(M, LAMBDA m : m.ts = 0) >= Th
+             THEN CHOOSE v \in confirmedV : TRUE \* TODO
+             ELSE {}
+               
 \*  STATE TRANSITION FUNCTION "T"
+
                 
 T(s,r,M) ==
 
     CASE r = 0 -> [vote    |-> s.vote     ,
                    ts      |-> s.ts       , 
-                   history |-> LET select == FBLVT(s,r,M) 
+                   history |-> LET select == F_BLVT(M) 
                                IN  IF   select # {}
                                    THEN s.history \cup {{select,0}}             
                                    ELSE s.history]
@@ -86,7 +108,7 @@ T(s,r,M) ==
     []   r = 1 -> [vote    |-> s.vote       , 
                    ts      |-> s.ts         , 
                    history |-> s.history    ]
-    \*TODO:               
+
     []   r = 2 -> [vote    |-> s.vote       ,
                    ts      |-> s.ts         , 
                    history |-> s.history    ]
