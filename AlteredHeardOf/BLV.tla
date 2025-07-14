@@ -72,11 +72,6 @@ S(s,r) ==  CASE r = 0 -> [v       |-> s.vote   ,
 Count(M,cond(_)) ==
     Cardinality({p \in DOMAIN M : cond(M[p])})
 
-\* Auxiliar Function: returns the messages in M that satisfy the given condition
-Set(M,cond(_)) ==
-    {p \in DOMAIN M : cond(M[p])}
-
-           
 \* Selection function F_BLVT, adapted from Algorithm 5 in the paper
 F_BLVT(M) ==
     LET possibleV == {<<m.v, m.ts>>: m \in {mp \in {M[p] : p \in DOMAIN M}:
@@ -94,7 +89,6 @@ F_BLVT(M) ==
              ELSE {}
                
 \*  STATE TRANSITION FUNCTION "T"
-
                 
 T(s,r,M) ==
 
