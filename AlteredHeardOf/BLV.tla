@@ -15,6 +15,7 @@ EXTENDS Naturals, FiniteSets
 (* outdated information.                                                    *)
 (****************************************************************************)
 
+
 CONSTANTS 
     Th,           \* Decision threshold (minimum number of votes required)
     Alpha         \* Parameter for resilience (used to validate history)
