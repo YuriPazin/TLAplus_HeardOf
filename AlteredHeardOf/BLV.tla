@@ -16,11 +16,14 @@ EXTENDS Naturals, FiniteSets
 (****************************************************************************)
 
 
-CONSTANTS 
+CONSTANTS
+    Phi,          \* Current algorithm iteration 
     Th,           \* Decision threshold (minimum number of votes required)
     Alpha         \* Parameter for resilience (used to validate history)
 
-ASSUME Th \in Nat \ {0}
+
+ASSUME Phi \in Nat \ {0}
+ASSUME Th  \in Nat \ {0}
 ASSUME Alpha \in Nat
 
 Phases == 3     \* The number of phases of the algorithm
@@ -60,11 +63,15 @@ Init(P,V) == LET initp(v) == [ vote    |-> v         ,
 
 S(s,r) ==  CASE r = 0 -> [v       |-> s.vote   ,
                           ts      |-> s.ts     , 
-                          history |-> s.history]
-           \*TODO:               
-           []   r = 1 -> [v       |-> {<<v,ts>> \in s.history: ts = r} ]
-           \*TODO:
-           []   r = 2 -> [v       |-> IF   s.ts = r
+                          history |-> s.history]    
+  
+           []   r = 1 -> [v       |-> LET msg == {<<v,ts>> \in s.history: ts = Phi}
+                                      IN  IF   msg # {}
+                                          THEN CHOOSE x \in msg: TRUE
+                                          ELSE {} ]
+           
+
+           []   r = 2 -> [v       |-> IF   s.ts = Phi
                                       THEN s.vote 
                                       ELSE {}       ]
 
@@ -86,7 +93,13 @@ F_BLVT(M) ==
         IF   confirmedV # {} 
         THEN CHOOSE v \in confirmedV : \A x \in confirmedV: v <= x  
         ELSE IF   Count(M, LAMBDA m : m.ts = 0) >= Th
-             THEN CHOOSE v \in confirmedV : TRUE \* TODO
+             THEN LET values == { M[p].v :p \in DOMAIN M} \* All values in M 
+                      v == {x \in values: \A y \in values: 
+                   \* v is the set of x values where for all other y values 
+                      Count(M, LAMBDA m : m.v=x) >= Count(M, LAMBDA m : m.v=y)}
+                   \*  # of messages of value x  >= # of messages of value y 
+                  IN  CHOOSE x \in v : \A y \in v: x <= y
+                   \*  from the set v, chose the smallest
              ELSE {}
                
 \*  STATE TRANSITION FUNCTION "T"
@@ -97,17 +110,21 @@ T(s,r,M) ==
                    ts      |-> s.ts       , 
                    history |-> LET select == F_BLVT(M) 
                                IN  IF   select # {}
-                                   THEN s.history \cup {{select,0}}             
+                                   THEN s.history \cup {{select,Phi}}             
                                    ELSE s.history]
     \*TODO:                                        
-    []   r = 1 -> [vote    |-> s.vote       , 
-                   ts      |-> s.ts         , 
-                   history |-> s.history    ]
+    []   r = 1 -> LET  v == {x \in {M[p].v : p \in DOMAIN M}: Count(M, LAMBDA m : m.v = x ) >= Th}
+                  IN   IF   v # {}
+                       THEN [vote    |-> CHOOSE x \in v: TRUE, 
+                             ts      |-> Phi                 , 
+                             history |-> s.history           ]
+                       ELSE [vote    |-> s.vote       , 
+                             ts      |-> s.ts         , 
+                             history |-> s.history    ]
 
-    []   r = 2 -> [vote    |-> s.vote       ,
-                   ts      |-> s.ts         , 
-                   history |-> s.history    ]
 
+    []   r = 2 -> s
+    
 \*TODO:                 
 ValidMessages == TRUE
                                       
