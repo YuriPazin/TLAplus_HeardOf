@@ -1,44 +1,84 @@
------------------------------------- MODULE PeaseSet ------------------------------------
+------------------------------------ MODULE PeaseSet -------------------------
+(****************************************************************************)
+(* This module defines the construction of "Pease Sets" wich is a set of    *)
+(* all transmission vectors allowed by a communication predicate and a set  *)
+(* of valid messages processes running an algorithm can produce.            *)
+(*                                                                          *)
+(* This module supports building these sets under various fault assumptions *)
+(* by using the predicates and abstractions provided, as well as joining    *)
+(* predicates                                                               *)
+(*                                                                          *)
+(* The main output of this module is the PeaseSet operator, which builds    *)
+(* the full set of possible communication vectors according to the chosen   *)
+(* predicate and the set of valid messages.                                 *)
+(****************************************************************************)
 
 LOCAL INSTANCE Integers
 LOCAL INSTANCE FiniteSets
-
 LOCAL INSTANCE TLC
 
-FullSet(ProcSet,ValidMsgs) == [ProcSet -> ValidMsgs]
+(***************************************************************************)
+(* Auxiliary Functions and Predicates                                      *)
+(***************************************************************************)
 
+\* Returns the full set of possible messages a process can send in a round
+FullSet(ProcSet,ValidMsgs) == 
+    [ProcSet -> ValidMsgs]
+
+\* Returns the set of all communication vectors that satisfy the given predicate.
 uCollection(ProcSet,ValidMsgs,SSafe,Predicate(_,_,_)) == [ProcSet -> {HO \in FullSet(ProcSet,ValidMsgs): Predicate(ProcSet,HO,SSafe)}]
 
+\* Heard-Of: The set of processes each process received messages this round.
+HO(ProcSet,u) == [p \in ProcSet |-> {q \in ProcSet: u[p] # {} }]
+
+\* Safe Heard-Of: The set of processes that correctly sent messages acording to S
 SHO(ProcSet,u,S) == {p \in ProcSet: u[p] = S[p]}
 
+\* Altered Heard-Of: The set of processes that sent messages that deviate from S
 AHO(ProcSet,u,S) == {p \in ProcSet: u[p] # S[p]}
 
-P_alfa(ProcSet,HO,S) == Cardinality(AHO(ProcSet,HO,S)) <= 1 
+\* Predicate P_alpha: returns TRUE if there is at most "a" processes deviate from the
+\* message sending function S
+P_alfa(ProcSet,a,u,S) == Cardinality(AHO(ProcSet,u,S)) <= a 
 
-SafeKernel(ProcSet,a) == {p \in SUBSET ProcSet: Cardinality(p) >= Cardinality(ProcSet) - a}
+(****************************************************************************)
+(* Auxiliary Functions                                                      *)
+(****************************************************************************)
 
-SafeOrByz(p,HO,SafeSend,ValidMsgs) == IF p \in HO 
-                                      THEN {SafeSend[p]}
-                                      ELSE ValidMsgs
+\* Builds an injective mapping from the domain of a function e to the
+\* values produced by f[e]. Used in permutation generation.
+Enum(e, f) ==
+  [DOMAIN (e :> f[e]) -> f[e]]
 
-WriteMsgs(P,HO,SafeSend,ValidMsgs) == [p \in P |-> SafeOrByz(p,HO,SafeSend,ValidMsgs)]
+\*Generates all possible permutations of values within the structure P.
+Perm(P) ==
+  {Enum(p, P) : p \in DOMAIN P}
 
-SafeKernel_Msgs(ProcSet,a,SafeSend,ValidMsgs) == LET SK == SafeKernel(ProcSet,a) 
-                                                 IN {WriteMsgs(ProcSet,sk,SafeSend,ValidMsgs) : sk \in SK} 
-
-Enum(e,f) == [DOMAIN (e :> f[e]) -> f[e]]
-
-Perm(P)== {Enum(p,P) :p \in DOMAIN P}
-
+\* Recursively joins a set of sets of sets. This is useful for creating
+\* Cartesian products or flattening layered structures.
 RECURSIVE Join(_)
 
-JoinFunc(P,Q) == {{ p @@ q  :q \in Q}: p \in P}  
+\* Auxiliary function for Join: joins a single element p with all
+\* elements of Q. Used in the recursive construction
+JoinFunc(P, Q) ==
+    {{ p @@ q  : q \in Q } : p \in P}  
 
-Join(P) == LET xi == CHOOSE x \in P: TRUE
-           IN IF Cardinality(P) > 1
-              THEN UNION JoinFunc(xi,Join(P\{xi}))
-              ELSE xi
+\* Recursively joins all sets in the input set P into a union of
+\* combinations. Used to generate all valid transmission vectors.
+Join(P) ==
+  LET xi == CHOOSE x \in P: TRUE
+  IN IF Cardinality(P) > 1
+     THEN UNION JoinFunc(xi, Join(P \ {xi}))
+     ELSE xi
 
-TransmissionVectors(ProcSet,a,SafeSend,ValidMsgs) == UNION {Join(Perm(p)) :p \in SafeKernel_Msgs(ProcSet,a,SafeSend,ValidMsgs)} 
+(***************************************************************************)
+(* Main Operator: Generates the Pease Sets                                 *)
+(***************************************************************************)
+
+\* Constructs all valid transmission vectors based on the predicate, set of 
+\* processes and Valid Messages in the Algorithm. This is the main output 
+\* representing all allowed message scenarios under the model's assumptions.    
+
+PeaseSet(ProcSet,ValidMsgs,Predicate(_)) == TRUE \*TODO
                                 
 ==========================================================================================
