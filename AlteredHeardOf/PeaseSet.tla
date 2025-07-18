@@ -22,24 +22,25 @@ LOCAL INSTANCE TLC
 (***************************************************************************)
 
 \* Returns the full set of possible messages a process can send in a round
-FullSet(ProcSet,ValidMsgs) == 
-    [ProcSet -> ValidMsgs]
+FullSet(P,ValidMsgs) == 
+    [P -> ValidMsgs]
 
-\* Returns the set of all communication vectors that satisfy the given predicate.
-uCollection(ProcSet,ValidMsgs,SSafe,Predicate(_,_,_)) == [ProcSet -> {HO \in FullSet(ProcSet,ValidMsgs): Predicate(ProcSet,HO,SSafe)}]
+\* SafeSend: Vector mapping each process to its intended message to be sent S(p)
+SafeSend(P,S(_,_),s,r) == [p \in P |-> S(s,r)]
 
 \* Heard-Of: The set of processes each process received messages this round.
-HO(ProcSet,u) == [p \in ProcSet |-> {q \in ProcSet: u[p] # {} }]
+HO(P,u) == [p \in P |-> {q \in P: u[p] # {} }]
 
 \* Safe Heard-Of: The set of processes that correctly sent messages acording to S
-SHO(ProcSet,u,S) == {p \in ProcSet: u[p] = S[p]}
+SHO(u,P,S(_,_),s,r) == {p \in P: u[p] = S(s,r)}
 
 \* Altered Heard-Of: The set of processes that sent messages that deviate from S
-AHO(ProcSet,u,S) == {p \in ProcSet: u[p] # S[p]}
+
+AHO(u) == TRUE
 
 \* Predicate P_alpha: returns TRUE if there is at most "a" processes deviate from the
 \* message sending function S
-P_alfa(ProcSet,a,u,S) == Cardinality(AHO(ProcSet,u,S)) <= a 
+P_alfa(a,u) == Cardinality(AHO(u)) <= a 
 
 (****************************************************************************)
 (* Auxiliary Functions                                                      *)
@@ -79,6 +80,6 @@ Join(P) ==
 \* processes and Valid Messages in the Algorithm. This is the main output 
 \* representing all allowed message scenarios under the model's assumptions.    
 
-PeaseSet(ProcSet,ValidMsgs,Predicate(_)) == TRUE \*TODO
+PeaseSet(ValidMsgs,Predicate(_,_)) == TRUE \*TODO
                                 
 ==========================================================================================

@@ -11,8 +11,7 @@
 (*                                                                          *)
 (****************************************************************************)
 
-
-EXTENDS  PeaseSet, BLV \*BLV is The Algorithm to be verified 
+EXTENDS  PeaseSet, BLV  \*BLV is The Algorithm to be verified 
 INSTANCE Integers
 INSTANCE FiniteSets
 INSTANCE Sequences
@@ -32,6 +31,7 @@ INSTANCE TLC
 (*          smallest value.                                                 *)
 (*                                                                          *)
 (****************************************************************************)
+
 CONSTANTS Processes , Values
 
 (****************************************************************************)
@@ -107,7 +107,6 @@ Spec == /\ SpecInit
 (*  terminates.                                                             *)
 (*                                                                          *)
 (****************************************************************************)
-
 
 Agreement == \A p,q \in Processes: \/ State[p]["d"] = {}
                                    \/ State[q]["d"] = {}
