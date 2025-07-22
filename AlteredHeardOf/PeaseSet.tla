@@ -35,7 +35,6 @@ HO(P,u) == [p \in P |-> {q \in P: u[p] # {} }]
 SHO(u,P,S(_,_),s,r) == {p \in P: u[p] = S(s,r)}
 
 \* Altered Heard-Of: The set of processes that sent messages that deviate from S
-
 AHO(u) == TRUE
 
 \* Predicate P_alpha: returns TRUE if there is at most "a" processes deviate from the
