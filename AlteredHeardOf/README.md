@@ -18,7 +18,7 @@ This framework maintains the modularity of the original Heard-Of approach and re
 
 * `mainByz.toolbox/`: TLC configuration files for experiments related to BLV and other Byzantine algorithms.
 * `BLV.tla`: A Byzantine-tolerant voting algorithm adapted from the paper "Tolerating Permanent and Transient Value Faults" [[2]](#BLVarticle).
-* `PeaseSet.tla`: Defines communication and fault model predicates (e.g., `NoSplit`, `K-Byzantine`, etc.). Also, it constructs **Pease Sets**, that contains possible transmission vectors of a given predicate and algorithm, those sets are then used as transitions by the model checker. 
+* `PeaseSet.tla`: Defines communication and fault model predicates (e.g., `NoSplit`, `K-Byzantine`, etc.). Also, it constructs **Pease Sets**, that contains possible transmission vectors of a given predicate and algorithm, these sets are then used to define transitions in the model checker.
 * `mainByz.tla`: Main module for model checking algorithms under the Altered Heard-Of model. It supports parameterization of algorithms and communication predicates.
 
 ---
@@ -29,7 +29,7 @@ The following tasks are planned to complete the Altered Heard-Of framework and t
 
 ### Framework Development
 
-* [ ] Finalize `PeaseSet.tla`: formal definition of value-carrying transmission vectors sets.
+* [ ] Finalize `PeaseSet.tla`: formal definition of value-carrying transmission vector sets.
 * [ ] Integrate known abstractions into predicate definitions in `PeaseSet.tla`.
 * [ ] Populate `PeaseSet.tla` with various communication predicates.
 
@@ -37,9 +37,9 @@ The following tasks are planned to complete the Altered Heard-Of framework and t
 
 * [x] Specify BLV algorithm in TLA+ (`BLV.tla`)
 * [ ] Verify consensus properties (Agreement, Termination) of BLV under different predicates.
-* [ ] Reproduce [results](#BLVarticle) obtained in the literature.
+* [ ] Reproduce the [results](#BLVarticle) reported in the literature.
       
-### Model Checking \& Evaluation
+### Model Checking & Evaluation
 
 * [ ] Design TLC models for varying numbers of processes and fault thresholds.
 * [ ] Record state space sizes and checking time for BLV under multiple conditions.
