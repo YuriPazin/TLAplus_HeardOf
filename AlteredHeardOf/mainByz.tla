@@ -11,7 +11,10 @@
 (*                                                                          *)
 (****************************************************************************)
 
-EXTENDS  PeaseSet, BLV  \*BLV is The Algorithm to be verified 
+EXTENDS  BLV  
+
+\*BLV is The Algorithm to be verified, chage to the desired algorithm  
+
 INSTANCE Integers
 INSTANCE FiniteSets
 INSTANCE Sequences
@@ -25,10 +28,10 @@ INSTANCE TLC
 (*          The set of processes {p1,p2,p3,...} in the distributed system   *)
 (*                                                                          *)
 (*      Values == (set of model values) OR (set of integers)                *)
-(*          The set of possible initial values. Itcan be a set of model     *)
-(*          values {A,B,C,...} or a set of integers {0,1,2,..} especially   *)
-(*          if the algorithm involves prioritization, such as choosing the  *)
-(*          smallest value.                                                 *)
+(*          The set of possible initial values. It can be a set of model    *)
+(*          values {A,B,C,...} or a set of integers {0,1,2,..}, if the      *)
+(*          algorithm involves prioritization of one vaue over others, such *)
+(*          as choosing the smallest value, a set of integers is recomended *)
 (*                                                                          *)
 (****************************************************************************)
 
@@ -52,7 +55,6 @@ CONSTANTS Processes , Values
 VARIABLES State, r 
 Variables == <<State, r>>
 
-
 (****************************************************************************)
 (*                                                                          *)
 (* SPEC:                                                                    *)
@@ -74,6 +76,14 @@ Variables == <<State, r>>
 (*     - Weak fairness is enforced on SpecNext to ensure progress.          *)
 (*                                                                          *)
 (****************************************************************************)
+
+INSTANCE PeaseSet WITH P <- Processes 
+
+SI21==("p1" :> [vote |-> 0, ts |-> 0, history |-> {{0, 0}}] @@
+       "p2" :> [vote |-> 0, ts |-> 0, history |-> {{0, 0}}] @@
+       "p3" :> [vote |-> 1, ts |-> 0, history |-> {{1, 0}}] )
+
+
 
 HW == TRUE
 
@@ -106,6 +116,14 @@ Spec == /\ SpecInit
 (*  not NULL. This ensures progress is made and the algorithm eventually    *)
 (*  terminates.                                                             *)
 (*                                                                          *)
+(*      Irrevocability: (Temporal property)                                 *)   
+(*                                                                          *)
+(*  Once a process has decided, its decision never changes                  *)  
+(*                                                                          *)
+(*      Integrity: (Invariant)                                              *)
+(*                                                                          *)
+(*  Processes decision must be in the set of initial proposed values        *)
+(*                                                                          *)
 (****************************************************************************)
 
 Agreement == \A p,q \in Processes: \/ State[p]["d"] = {}
@@ -113,5 +131,10 @@ Agreement == \A p,q \in Processes: \/ State[p]["d"] = {}
                                    \/ State[p]["d"] = State[q]["d"] 
 
 Termination == <>(\A p,q \in Processes: State[p]["d"] # {})
+
+Irrevocability == \A p \in Processes : [][State[p]["d"] = {}]_<<State[p]["d"]>>
+
+Integrity == \A p \in Processes : State[p]["d"] = {} \cup Values
+
 
 =============================================================================

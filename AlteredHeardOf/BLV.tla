@@ -22,7 +22,7 @@ CONSTANTS
     Alpha         \* Parameter for resilience (used to validate history)
 
 
-ASSUME Phi \in Nat \ {0}
+ASSUME Phi \in Nat
 ASSUME Th  \in Nat \ {0}
 ASSUME Alpha \in Nat
 
@@ -126,6 +126,6 @@ T(s,r,M) ==
     []   r = 2 -> s
     
 \*TODO:                 
-ValidMessages == TRUE
+ValidMsgs == {TRUE}
                                       
 ==========================================================================================

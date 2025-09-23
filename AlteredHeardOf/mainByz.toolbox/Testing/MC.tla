@@ -12,39 +12,49 @@ A, B
 ----
 
 \* MV CONSTANT definitions Processes
-const_1751553357475210000 == 
+const_175863033485998000 == 
 {p1, p2, p3}
 ----
 
 \* MV CONSTANT definitions Values
-const_1751553357475211000 == 
+const_175863033485999000 == 
 {A, B}
 ----
 
 \* New definitions @modelParameterNewDefinitions
 sIA ==[vote |-> A, ts |-> 0, history |-> {{A, 0}}]
 sIB ==[vote |-> B, ts |-> 0, history |-> {{B, 0}}]
-SI21==(p1 :> [vote |-> A, ts |-> 0, history |-> {{A, 0}}] @@
-       p2 :> [vote |-> A, ts |-> 0, history |-> {{A, 0}}] @@
-       p3 :> [vote |-> B, ts |-> 0, history |-> {{B, 0}}] )
 ----
+\* CONSTANT definitions @modelParameterConstants:2Th
+const_1758630334859100000 == 
+3
+----
+
+\* CONSTANT definitions @modelParameterConstants:3Phi
+const_1758630334859101000 == 
+0
+----
+
+\* CONSTANT definitions @modelParameterConstants:4Alpha
+const_1758630334859102000 == 
+1
+----
+
 \* Constant expression definition @modelExpressionEval
-const_expr_1751553357476212000 == 
-SI21
+const_expr_1758630334859103000 == 
+HW
 ----
 
 \* Constant expression ASSUME statement @modelExpressionEval
-ASSUME PrintT(<<"$!@$!@$!@$!@$!",const_expr_1751553357476212000>>)
+ASSUME PrintT(<<"$!@$!@$!@$!@$!",const_expr_1758630334859103000>>)
 ----
 
 \* INIT definition @modelBehaviorNoSpec:0
-init_1751553357476213000 ==
+init_1758630334859104000 ==
 FALSE/\r = 0
 ----
 \* NEXT definition @modelBehaviorNoSpec:0
-next_1751553357476214000 ==
+next_1758630334859105000 ==
 FALSE/\r' = r
 ----
 ==========================================================================================
-\* Modification History
-\* Created Thu Jul 03 11:35:57 BRT 2025 by yuri

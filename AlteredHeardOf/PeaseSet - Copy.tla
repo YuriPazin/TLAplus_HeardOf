@@ -17,30 +17,28 @@ LOCAL INSTANCE Integers
 LOCAL INSTANCE FiniteSets
 LOCAL INSTANCE TLC
 
-CONSTANTS P, ValidMsgs
-
 (***************************************************************************)
 (* Auxiliary Functions and Predicates                                      *)
 (***************************************************************************)
 
 \* Returns the full set of possible messages a process can send in a round
-FullSet == [P -> ValidMsgs]
+FullSet(P,ValidMsgs) == [P -> ValidMsgs]
 
 \* SafeSend: Vector mapping each process to its intended message to be sent S(p)
-SafeSend(S(_,_),s,r) == [p \in P |-> S(s,r)]
+SafeSend(P,S(_,_),s,r) == [p \in P |-> S(s,r)]
 
 \* Heard-Of: The set of processes each process received messages this round.
-HO(u) == [p \in P |-> {q \in P: u[p] # {} }]
+HO(u,P) == [p \in P |-> {q \in P: u[p] # {} }]
 
 \* Safe Heard-Of: The set of processes that correctly sent messages acording to S
-SHO(u,S(_,_),s,r) == {p \in P: u[p] = S(s,r)}
+SHO(u,P,S(_,_),s,r) == {p \in P: u[p] = S(s,r)}
 
 \* Altered Heard-Of: The set of processes that sent messages that deviate from S
-AHO(u,S(_,_),s,r) == {p \in P: u[p] # S(s,r)}
+AHO(u,P,S(_,_),s,r) == {p \in P: u[p] # S(s,r)}
 
 \* Predicate P_alpha: returns TRUE if there is at most "a" processes deviate from the
 \* message sending function S
-P_alfa(a,u,S(_,_),s,r) == Cardinality(AHO(u,S,s,r)) <= a 
+P_alfa(a,u,P,S(_,_),s,r) == Cardinality(AHO(u,P,S,s,r)) <= a 
 
 (****************************************************************************)
 (* Auxiliary Functions                                                      *)
@@ -52,8 +50,8 @@ Enum(e, f) ==
   [DOMAIN (e :> f[e]) -> f[e]]
 
 \*Generates all possible permutations of values within the structure P.
-Perm(A) ==
-  {Enum(a, A) : a \in DOMAIN A}
+Perm(P) ==
+  {Enum(p, P) : p \in DOMAIN P}
 
 \* Recursively joins a set of sets of sets. This is useful for creating
 \* Cartesian products or flattening layered structures.
@@ -61,15 +59,15 @@ RECURSIVE Join(_)
 
 \* Auxiliary function for Join: joins a single element p with all
 \* elements of Q. Used in the recursive construction
-JoinFunc(A, B) ==
-    {{ a @@ b  : b \in B } : a \in A}  
+JoinFunc(P, Q) ==
+    {{ p @@ q  : q \in Q } : p \in P}  
 
 \* Recursively joins all sets in the input set P into a union of
 \* combinations. Used to generate all valid transmission vectors.
-Join(A) ==
-  LET xi == CHOOSE x \in A: TRUE
-  IN IF Cardinality(A) > 1
-     THEN UNION JoinFunc(xi, Join(A \ {xi}))
+Join(P) ==
+  LET xi == CHOOSE x \in P: TRUE
+  IN IF Cardinality(P) > 1
+     THEN UNION JoinFunc(xi, Join(P \ {xi}))
      ELSE xi
 
 (***************************************************************************)
@@ -80,8 +78,8 @@ Join(A) ==
 \* processes and Valid Messages in the Algorithm. This is the main output 
 \* representing all allowed message scenarios under the model's assumptions.    
 
-PeaseSets(Predicate(_)) == 
-    {pu \in [P -> FullSet] : Predicate(pu) }
+PeaseSet(P,ValidMsgs,Predicate(_)) == 
+    {pu \in [P -> FullSet(P,ValidMsgs)] : Predicate(pu) }
 
 
                                 
