@@ -21,6 +21,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/BLV.tla</locationURI>
 		</link>
 		<link>
+			<name>ExtendedSequences.tla</name>
+			<type>1</type>
+			<location>C:/Users/yuri/Desktop/Mestrado/TLAplus_HeardOf/AlteredHeardOf/ExtendedSequences.tla</location>
+		</link>
+		<link>
 			<name>PeaseSet.tla</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/PeaseSet.tla</locationURI>

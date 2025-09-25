@@ -1,6 +1,6 @@
 --------------------------------------- MODULE BLV ---------------------------------------
 EXTENDS Naturals, FiniteSets
-
+INSTANCE ExtendedSequences
 (****************************************************************************)
 (* This algorithm is called BLV. (Byzantine Last Voting). It is based on    *)
 (* the last voting mechanism introduced in the Paxos algorithm by Lamport   *) 
@@ -34,7 +34,8 @@ Phases == 3     \* The number of phases of the algorithm
 
 Init(P,V) == LET initp(v) == [ vote    |-> v         ,
                                ts      |-> 0         , 
-                               history |-> {<<v,0>>} ]
+                               history |-> {<<v,0>>} ,
+                               d       |-> NULL      ]
                                
              IN [ P -> { initp(v) : v \in V } ] 
 
@@ -61,19 +62,19 @@ Init(P,V) == LET initp(v) == [ vote    |-> v         ,
 
 \* MESSAGE SENDING FUNCTION "S"
 
-S(s,r) ==  CASE r = 0 -> [v       |-> s.vote   ,
+S(s,r) ==  CASE r = 0 -> [vote    |-> s.vote   ,
                           ts      |-> s.ts     , 
                           history |-> s.history]    
   
-           []   r = 1 -> [v       |-> LET msg == {<<v,ts>> \in s.history: ts = Phi}
+           []   r = 1 -> [vote    |-> LET msg == {<<vote,ts>> \in s.history: ts = Phi}
                                       IN  IF   msg # {}
                                           THEN CHOOSE x \in msg: TRUE
                                           ELSE {} ]
            
 
-           []   r = 2 -> [v       |-> IF   s.ts = Phi
-                                      THEN s.vote 
-                                      ELSE {}       ]
+           []   r = 2 -> [vote     |-> IF   s.ts = Phi
+                                       THEN s.vote 
+                                       ELSE {}       ]
 
 
 \* Auxiliar Function: counts how many messages in M satisfy the given condition
@@ -82,7 +83,7 @@ Count(M,cond(_)) ==
 
 \* Selection function F_BLVT, adapted from Algorithm 5 in the paper
 F_BLVT(M) ==
-    LET possibleV == {<<m.v, m.ts>>: m \in {mp \in {M[p] : p \in DOMAIN M}:
+    LET possibleV == {<<m.vote, m.ts>>: m \in {mp \in {M[p] : p \in DOMAIN M}:
             Count(M, LAMBDA mq :\/ mp.ts > mq.ts 
                                 \/ /\ mp.v  = mq.v 
                                    /\ mp.ts = mq.ts )>= Th}}
@@ -110,22 +111,30 @@ T(s,r,M) ==
                    ts      |-> s.ts       , 
                    history |-> LET select == F_BLVT(M) 
                                IN  IF   select # {}
-                                   THEN s.history \cup {{select,Phi}}             
-                                   ELSE s.history]
+                                   THEN s.history \cup {<<select,Phi>>}             
+                                   ELSE s.history
+                                          ,
+                   d       |-> s.d        ]
+                                   
     \*TODO:                                        
     []   r = 1 -> LET  v == {x \in {M[p].v : p \in DOMAIN M}: Count(M, LAMBDA m : m.v = x ) >= Th}
                   IN   IF   v # {}
                        THEN [vote    |-> CHOOSE x \in v: TRUE, 
                              ts      |-> Phi                 , 
-                             history |-> s.history           ]
+                             history |-> s.history           , 
+                             d       |-> s.d                 ]
                        ELSE [vote    |-> s.vote       , 
                              ts      |-> s.ts         , 
-                             history |-> s.history    ]
+                             history |-> s.history    ,
+                             d       |-> s.d          ]
 
 
     []   r = 2 -> s
     
 \*TODO:                 
-ValidMsgs == {TRUE}
+ValidMessages(r,V) == LET initp(v) == [ vote    |-> v         ,
+                                        ts      |-> 0         , 
+                                        history |-> {<<v,0>>} ]
+                      IN {initp(v) : v \in V }
                                       
 ==========================================================================================

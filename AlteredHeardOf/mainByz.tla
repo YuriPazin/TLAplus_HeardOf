@@ -11,13 +11,14 @@
 (*                                                                          *)
 (****************************************************************************)
 
-EXTENDS  BLV  
+EXTENDS  BLV
 
-\*BLV is The Algorithm to be verified, chage to the desired algorithm  
+\*BLV is The Algorithm to be verified, change to the desired algorithm  
 
 INSTANCE Integers
 INSTANCE FiniteSets
 INSTANCE Sequences
+INSTANCE ExtendedSequences
 INSTANCE TLC
 
 (****************************************************************************)
@@ -77,15 +78,10 @@ Variables == <<State, r>>
 (*                                                                          *)
 (****************************************************************************)
 
-INSTANCE PeaseSet WITH P <- Processes 
+INSTANCE PeaseSet WITH ValidMsgs <- ValidMessages(r,Values) 
 
-SI21==("p1" :> [vote |-> 0, ts |-> 0, history |-> {{0, 0}}] @@
-       "p2" :> [vote |-> 0, ts |-> 0, history |-> {{0, 0}}] @@
-       "p3" :> [vote |-> 1, ts |-> 0, history |-> {{1, 0}}] )
-
-
-
-HW == TRUE
+HW == LET Pred(u) == P_alfa(1,u,State,r)
+      IN  PeaseSets(Pred)
 
 SpecInit == /\ r = 0
             /\ State \in Init(Processes,Values)
@@ -126,15 +122,15 @@ Spec == /\ SpecInit
 (*                                                                          *)
 (****************************************************************************)
 
-Agreement == \A p,q \in Processes: \/ State[p]["d"] = {}
-                                   \/ State[q]["d"] = {}
+Agreement == \A p,q \in Processes: \/ State[p]["d"] = NULL 
+                                   \/ State[q]["d"] = NULL 
                                    \/ State[p]["d"] = State[q]["d"] 
 
-Termination == <>(\A p,q \in Processes: State[p]["d"] # {})
+Termination == <>(\A p,q \in Processes: State[p]["d"] # NULL )
 
 Irrevocability == \A p \in Processes : [][State[p]["d"] = {}]_<<State[p]["d"]>>
 
-Integrity == \A p \in Processes : State[p]["d"] = {} \cup Values
+Integrity == \A p \in Processes : State[p]["d"] \in Values \cup {NULL} 
 
 
 =============================================================================

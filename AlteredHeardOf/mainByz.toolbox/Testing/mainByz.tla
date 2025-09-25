@@ -11,9 +11,9 @@
 (*                                                                          *)
 (****************************************************************************)
 
-EXTENDS  BLV  
+EXTENDS  BLV
 
-\*BLV is The Algorithm to be verified, chage to the desired algorithm  
+\*BLV is The Algorithm to be verified, change to the desired algorithm  
 
 INSTANCE Integers
 INSTANCE FiniteSets
@@ -77,16 +77,9 @@ Variables == <<State, r>>
 (*                                                                          *)
 (****************************************************************************)
 
-INSTANCE PeaseSet WITH P <- Processes 
+INSTANCE PeaseSet WITH ValidMsgs <- ValidMessages(r,Values) 
 
-SI21==("p1" :> [vote |-> 0, ts |-> 0, history |-> {{0, 0}}] @@
-       "p2" :> [vote |-> 0, ts |-> 0, history |-> {{0, 0}}] @@
-       "p3" :> [vote |-> 1, ts |-> 0, history |-> {{1, 0}}] )
-
-
-Predicate(u) == P_alfa(1,u,S,SI21,0)
-
-HW == PeaseSets(Predicate)
+HW == TRUE
 
 SpecInit == /\ r = 0
             /\ State \in Init(Processes,Values)

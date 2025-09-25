@@ -61,19 +61,19 @@ Init(P,V) == LET initp(v) == [ vote    |-> v         ,
 
 \* MESSAGE SENDING FUNCTION "S"
 
-S(s,r) ==  CASE r = 0 -> [v       |-> s.vote   ,
+S(s,r) ==  CASE r = 0 -> [vote    |-> s.vote   ,
                           ts      |-> s.ts     , 
                           history |-> s.history]    
   
-           []   r = 1 -> [v       |-> LET msg == {<<v,ts>> \in s.history: ts = Phi}
+           []   r = 1 -> [vote    |-> LET msg == {<<vote,ts>> \in s.history: ts = Phi}
                                       IN  IF   msg # {}
                                           THEN CHOOSE x \in msg: TRUE
                                           ELSE {} ]
            
 
-           []   r = 2 -> [v       |-> IF   s.ts = Phi
-                                      THEN s.vote 
-                                      ELSE {}       ]
+           []   r = 2 -> [vote     |-> IF   s.ts = Phi
+                                       THEN s.vote 
+                                       ELSE {}       ]
 
 
 \* Auxiliar Function: counts how many messages in M satisfy the given condition
@@ -110,7 +110,7 @@ T(s,r,M) ==
                    ts      |-> s.ts       , 
                    history |-> LET select == F_BLVT(M) 
                                IN  IF   select # {}
-                                   THEN s.history \cup {{select,Phi}}             
+                                   THEN s.history \cup {<<select,Phi>>}             
                                    ELSE s.history]
     \*TODO:                                        
     []   r = 1 -> LET  v == {x \in {M[p].v : p \in DOMAIN M}: Count(M, LAMBDA m : m.v = x ) >= Th}
@@ -126,6 +126,9 @@ T(s,r,M) ==
     []   r = 2 -> s
     
 \*TODO:                 
-ValidMsgs == {TRUE}
+ValidMessages(r,V) == LET initp(v) == [ vote    |-> v         ,
+                                        ts      |-> 0         , 
+                                        history |-> {<<v,0>>} ]
+                      IN {initp(v) : v \in V }
                                       
 ==========================================================================================
