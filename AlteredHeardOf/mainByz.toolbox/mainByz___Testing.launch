@@ -12,7 +12,7 @@
     <stringAttribute key="distributedTLC" value="off"/>
     <stringAttribute key="distributedTLCVMArgs" value=""/>
     <intAttribute key="fpBits" value="0"/>
-    <intAttribute key="fpIndex" value="4"/>
+    <intAttribute key="fpIndex" value="111"/>
     <booleanAttribute key="fpIndexRandom" value="true"/>
     <intAttribute key="maxHeapSize" value="75"/>
     <intAttribute key="maxSetSize" value="1000000"/>
@@ -26,8 +26,8 @@
     <booleanAttribute key="modelCorrectnessCheckDeadlock" value="true"/>
     <listAttribute key="modelCorrectnessInvariants"/>
     <listAttribute key="modelCorrectnessProperties"/>
-    <intAttribute key="modelEditorOpenTabs" value="14"/>
-    <stringAttribute key="modelExpressionEval" value="LET Pred(x) == P_alfa(1,x,SI21,0)&#13;&#10;IN  PeaseSets(Pred)&#13;&#10;\*AHO(SafeVector(SI21,0),SI21,0)&#13;&#10;\*AHO(ubiz,SI21,0)&#13;&#10;\*ubiz \in [Processes-&gt;FullSet]"/>
+    <intAttribute key="modelEditorOpenTabs" value="10"/>
+    <stringAttribute key="modelExpressionEval" value="\*LET Pred(u) == P_alfa(1,u,SI21,0)&#13;&#10;\*IN  n(PeaseSets(Pred))&#13;&#10;AHO(ubiz,SI21,0)"/>
     <stringAttribute key="modelParameterActionConstraint" value=""/>
     <listAttribute key="modelParameterConstants">
         <listEntry value="Processes;;{p1, p2, p3};1;0"/>

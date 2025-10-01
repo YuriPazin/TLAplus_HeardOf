@@ -15,6 +15,7 @@
 
 LOCAL INSTANCE Integers
 LOCAL INSTANCE FiniteSets
+LOCAL INSTANCE ExtendedSequences
 LOCAL INSTANCE TLC
 
 (***************************************************************************)

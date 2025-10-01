@@ -18,6 +18,7 @@ EXTENDS  BLV
 INSTANCE Integers
 INSTANCE FiniteSets
 INSTANCE Sequences
+INSTANCE ExtendedSequences
 INSTANCE TLC
 
 (****************************************************************************)
@@ -79,7 +80,8 @@ Variables == <<State, r>>
 
 INSTANCE PeaseSet WITH ValidMsgs <- ValidMessages(r,Values) 
 
-HW == TRUE
+HW == LET Pred(u) == P_alfa(1,u,State,r)
+      IN  PeaseSets(Pred)
 
 SpecInit == /\ r = 0
             /\ State \in Init(Processes,Values)
@@ -120,15 +122,15 @@ Spec == /\ SpecInit
 (*                                                                          *)
 (****************************************************************************)
 
-Agreement == \A p,q \in Processes: \/ State[p]["d"] = {}
-                                   \/ State[q]["d"] = {}
+Agreement == \A p,q \in Processes: \/ State[p]["d"] = NULL 
+                                   \/ State[q]["d"] = NULL 
                                    \/ State[p]["d"] = State[q]["d"] 
 
-Termination == <>(\A p,q \in Processes: State[p]["d"] # {})
+Termination == <>(\A p,q \in Processes: State[p]["d"] # NULL )
 
-Irrevocability == \A p \in Processes : [][State[p]["d"] = {}]_<<State[p]["d"]>>
+Irrevocability == \A p \in Processes : [][State[p]["d"] = NULL]_<<State[p]["d"]>>
 
-Integrity == \A p \in Processes : State[p]["d"] = {} \cup Values
+Integrity == \A p \in Processes : State[p]["d"] \in Values \cup {NULL} 
 
 
 =============================================================================

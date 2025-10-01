@@ -69,7 +69,7 @@ S(s,r) ==  CASE r = 0 -> [vote    |-> s.vote   ,
            []   r = 1 -> [vote    |-> LET msg == {<<vote,ts>> \in s.history: ts = Phi}
                                       IN  IF   msg # {}
                                           THEN CHOOSE x \in msg: TRUE
-                                          ELSE {} ]
+                                          ELSE NULL ]
            
 
            []   r = 2 -> [vote     |-> IF   s.ts = Phi
@@ -115,8 +115,7 @@ T(s,r,M) ==
                                    ELSE s.history
                                           ,
                    d       |-> s.d        ]
-                                   
-    \*TODO:                                        
+                                                                        
     []   r = 1 -> LET  v == {x \in {M[p].v : p \in DOMAIN M}: Count(M, LAMBDA m : m.v = x ) >= Th}
                   IN   IF   v # {}
                        THEN [vote    |-> CHOOSE x \in v: TRUE, 

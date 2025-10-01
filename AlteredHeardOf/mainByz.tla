@@ -128,7 +128,7 @@ Agreement == \A p,q \in Processes: \/ State[p]["d"] = NULL
 
 Termination == <>(\A p,q \in Processes: State[p]["d"] # NULL )
 
-Irrevocability == \A p \in Processes : [][State[p]["d"] = {}]_<<State[p]["d"]>>
+Irrevocability == \A p \in Processes : [][State[p]["d"] = NULL]_<<State[p]["d"]>>
 
 Integrity == \A p \in Processes : State[p]["d"] \in Values \cup {NULL} 
 

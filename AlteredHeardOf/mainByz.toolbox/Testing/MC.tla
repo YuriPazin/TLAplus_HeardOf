@@ -7,7 +7,7 @@ p1, p2, p3
 ----
 
 \* MV CONSTANT definitions Processes
-const_17588144149051122000 == 
+const_175882294900898000 == 
 {p1, p2, p3}
 ----
 
@@ -32,44 +32,42 @@ ubiz==
            p3 :> [ts |-> 0, history |-> {<<1, 0>>}, vote |-> 1] ) )
 ----
 \* CONSTANT definitions @modelParameterConstants:1Values
-const_17588144149051123000 == 
+const_175882294900899000 == 
 {0, 1}
 ----
 
 \* CONSTANT definitions @modelParameterConstants:2Th
-const_17588144149051124000 == 
+const_1758822949008100000 == 
 3
 ----
 
 \* CONSTANT definitions @modelParameterConstants:3Phi
-const_17588144149051125000 == 
+const_1758822949008101000 == 
 0
 ----
 
 \* CONSTANT definitions @modelParameterConstants:4Alpha
-const_17588144149051126000 == 
+const_1758822949008102000 == 
 1
 ----
 
 \* Constant expression definition @modelExpressionEval
-const_expr_17588144149051127000 == 
-LET Pred(x) == P_alfa(1,x,SI21,0)
-IN  PeaseSets(Pred)
-\*AHO(SafeVector(SI21,0),SI21,0)
-\*AHO(ubiz,SI21,0)
-\*ubiz \in [Processes->FullSet]
+const_expr_1758822949008103000 == 
+\*LET Pred(u) == P_alfa(1,u,SI21,0)
+\*IN  n(PeaseSets(Pred))
+AHO(ubiz,SI21,0)
 ----
 
 \* Constant expression ASSUME statement @modelExpressionEval
-ASSUME PrintT(<<"$!@$!@$!@$!@$!",const_expr_17588144149051127000>>)
+ASSUME PrintT(<<"$!@$!@$!@$!@$!",const_expr_1758822949008103000>>)
 ----
 
 \* INIT definition @modelBehaviorNoSpec:0
-init_17588144149051128000 ==
+init_1758822949008104000 ==
 FALSE/\r = 0
 ----
 \* NEXT definition @modelBehaviorNoSpec:0
-next_17588144149051129000 ==
+next_1758822949008105000 ==
 FALSE/\r' = r
 ----
 ==========================================================================================

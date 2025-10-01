@@ -2,7 +2,7 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 70 and seed -4573842587637846594 with 8 workers on 8 cores with 5257MB heap and 64MB offheap memory [pid: 3640] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, NoopFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 111 and seed 3716419124824915951 with 8 workers on 8 cores with 5257MB heap and 64MB offheap memory [pid: 12616] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, NoopFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -15,13 +15,15 @@ Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools
 Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\FiniteSets.tla
 Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Integers.tla
 Parsing file C:\Users\yuri\Desktop\Mestrado\toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Sequences.tla
+Parsing file C:\Users\yuri\Desktop\Mestrado\TLAplus_HeardOf\AlteredHeardOf\mainByz.toolbox\Testing\ExtendedSequences.tla
 Parsing file C:\Users\yuri\Desktop\Mestrado\TLAplus_HeardOf\AlteredHeardOf\mainByz.toolbox\Testing\PeaseSet.tla
 Semantic processing of module Naturals
 Semantic processing of module Sequences
 Semantic processing of module FiniteSets
-Semantic processing of module BLV
 Semantic processing of module Integers
 Semantic processing of module TLC
+Semantic processing of module ExtendedSequences
+Semantic processing of module BLV
 Semantic processing of module PeaseSet
 Semantic processing of module mainByz
 Semantic processing of module MC
@@ -29,278 +31,14 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2025-09-25 12:33:35)
+Starting... (2025-09-25 14:55:49)
 @!@!@ENDMSG 2185 @!@!@
-<< "$!@$!@$!@$!@$!",
-   { ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ),
-     ( p1 :>
-           ( p1 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p2 :>
-           ( p1 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) @@
-       p3 :>
-           ( p1 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] @@
-             p2 :> [vote |-> 0, ts |-> 0, history |-> {<<0, 0>>}] @@
-             p3 :> [vote |-> 1, ts |-> 0, history |-> {<<1, 0>>}] ) ) } >>
+<<"$!@$!@$!@$!@$!", {p3}>>
 @!@!@STARTMSG 2189:0 @!@!@
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 0 distinct states generated at 2025-09-25 12:33:35.
+Finished computing initial states: 0 distinct states generated at 2025-09-25 14:55:49.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2193:0 @!@!@
 Model checking completed. No error has been found.
@@ -309,7 +47,7 @@ Model checking completed. No error has been found.
   calculated (optimistic):  val = 0.0
 @!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(1) at 2025-09-25 12:33:35: 0 states generated (0 s/min), 0 distinct states found (0 ds/min), 0 states left on queue.
+Progress(1) at 2025-09-25 14:55:49: 0 states generated (0 s/min), 0 distinct states found (0 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
 0 states generated, 0 distinct states found, 0 states left on queue.
@@ -318,5 +56,5 @@ Progress(1) at 2025-09-25 12:33:35: 0 states generated (0 s/min), 0 distinct sta
 The depth of the complete state graph search is 1.
 @!@!@ENDMSG 2194 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 576ms at (2025-09-25 12:33:35)
+Finished in 679ms at (2025-09-25 14:55:49)
 @!@!@ENDMSG 2186 @!@!@
