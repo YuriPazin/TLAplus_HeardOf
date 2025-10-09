@@ -133,4 +133,5 @@ Irrevocability == \A p \in Processes : [][State[p]["d"] = NULL]_<<State[p]["d"]>
 Integrity == \A p \in Processes : State[p]["d"] \in Values \cup {NULL} 
 
 
+
 =============================================================================
