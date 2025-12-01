@@ -85,7 +85,7 @@ Count(M,cond(_)) ==
 F_BLVT(M) ==
     LET possibleV == {<<m.vote, m.ts>>: m \in {mp \in {M[p] : p \in DOMAIN M}:
             Count(M, LAMBDA mq :\/ mp.ts > mq.ts 
-                                \/ /\ mp.v  = mq.v 
+                                \/ /\ mp.vote  = mq.vote 
                                    /\ mp.ts = mq.ts )>= Th}}
         
         confirmedV == { <<v, ts>> \in possibleV: 

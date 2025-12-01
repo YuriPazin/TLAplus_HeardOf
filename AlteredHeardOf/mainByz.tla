@@ -84,7 +84,7 @@ HW == LET Pred(u) == P_alfa(1,u,State,r)
       IN  PeaseSets(Pred)
 
 SpecInit == /\ r = 0
-            /\ State \in Init(Processes,Values)
+            /\ State \in Init(Processes,Values) 
             
 
 SpecNext == /\ r' = (r + 1) % Phases
@@ -128,10 +128,8 @@ Agreement == \A p,q \in Processes: \/ State[p]["d"] = NULL
 
 Termination == <>(\A p,q \in Processes: State[p]["d"] # NULL )
 
-Irrevocability == \A p \in Processes : [][State[p]["d"] = NULL]_<<State[p]["d"]>>
+Irrevocability == \A p \in Processes, v \in Values: [](State[p]["d"] = v => [] (State[p]["d"] = v))
 
-Integrity == \A p \in Processes : State[p]["d"] \in Values \cup {NULL} 
-
-
+Integrity == \A v \in Values: ((\A p \in Processes: State[p]["vote"] = v) => [] (\A q \in Processes: State[q]["d"] \in {v,NULL}))
 
 =============================================================================
