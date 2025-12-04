@@ -18,74 +18,66 @@ LOCAL INSTANCE FiniteSets
 LOCAL INSTANCE ExtendedSequences
 LOCAL INSTANCE TLC
 
-(***************************************************************************)
-(* Auxiliary Functions and Predicates                                      *)
-(***************************************************************************)
-
 CONSTANT Processes , ValidMsgs ,  S(_,_)
 
-\* Returns the full set of possible messages a process can send in a round
-FullSet == [Processes -> ValidMsgs]
+(***************************************************************************)
+(* Auxiliary Definitions                                                   *)
+(***************************************************************************)
 
 \* SafeSend: Vector mapping each process to its intended message to be sent S(p)
-SafeSend(s,r) == [p \in Processes |-> S(s[p],r)]
+SafeVector(s,r) == [p \in Processes |-> S(s[p],r)]
 
-\* SafeVector: Correct Reception Vector expected in current round
-SafeVector(s,r) == [p \in Processes |-> SafeSend(s,r)]
+\* SafeMatrix: Correct Reception Matrix expected in current round
+SafeMatrix(s,r) == [p \in Processes |-> SafeVector(s,r)]
 
 \* Heard-Of: The set of processes each process received messages this round.
-HO(u) == [p \in Processes |-> {q \in Processes: u[p] # {} }]
+HO(u) == [p \in Processes |-> {q \in Processes: u[p][q] # NULL }]
 
-\* Safe Heard-Of: The set of processes that correctly sent messages acording to S
-SHO(u,s,r) == {p \in Processes: u[p] = S(s,r)}
+\* Safe Heard-Of: The set of processes each process recieved messages acording to S
+SHO(u,s,r) == [p \in Processes |-> {q \in Processes: u[p][q] = S(s[q],r)}]
 
-\* Altered Heard-Of: The set of processes that sent messages that deviate from S
-AHO(u,s,r) == {p \in Processes: \E m \in {u[q][p] : q \in Processes}: m # S(s[p],r)}
+\* Altered Heard-Of: The set of processes each process recieved a corrupted message
+AHO(u,s,r) == [p \in Processes |-> HO(u)[p] \ SHO(u,s,r)[p]]
 
-\* Predicate P_alpha: returns TRUE if there is at most "a" processes deviate from the
-\* message sending function S
-P_alfa(a,u,s,r) == Cardinality(AHO(u,s,r)) <= a 
+\*Safe Kernel: The set of processes whose messages were received correctly by all processes.
+SK(u,s,r) ==  {p \in Processes: (\A q \in Processes: p \in SHO(u,s,r)[q])}
 
-(****************************************************************************)
-(* Auxiliary Functions                                                      *)
-(****************************************************************************)
+\*Altered Span: The set of processes where any of its messages ware corrupted.
+AS(u,s,r) == {p \in Processes: (\E q \in Processes: p \in AHO(u,s,r)[q])}
 
-\* Builds an injective mapping from the domain of a function e to the
-\* values produced by f[e]. Used in permutation generation.
-Enum(e, f) ==
-  [DOMAIN (e :> f[e]) -> f[e]]
-
-\*Generates all possible permutations of values within the structure P.
-Perm(A) ==
-  {Enum(a, A) : a \in DOMAIN A}
-
-\* Recursively joins a set of sets of sets. This is useful for creating
-\* Cartesian products or flattening layered structures.
-RECURSIVE Join(_)
-
-\* Auxiliary function for Join: joins a single element p with all
-\* elements of Q. Used in the recursive construction
-JoinFunc(A, B) ==
-    {{ a @@ b  : b \in B } : a \in A}  
-
-\* Recursively joins all sets in the input set P into a union of
-\* combinations. Used to generate all valid transmission vectors.
-Join(A) ==
-  LET xi == CHOOSE x \in A: TRUE
-  IN IF Cardinality(A) > 1
-     THEN UNION JoinFunc(xi, Join(A \ {xi}))
-     ELSE xi
+\*Consistency: The condition that all processes received the same messages in the round.
+CONS(u,r) == \A p,q \in Processes: u[p] = u[q]
 
 (***************************************************************************)
-(* Main Operator: Generates the Pease Sets                                 *)
+(* Communication Predicates                                                *)
 (***************************************************************************)
 
-\* Constructs all valid transmission vectors based on the predicate, set of 
+\* Predicate P_alpha: restricts the number of corrupted messages to 
+\* "alpha" per process, the corrupted message can be from any set of processes  
+P_alpha(alpha,u,s,r) == \A p \in Processes: Cardinality(AHO(u,s,r)[p]) <= alpha 
+
+\* Predicate P_f: restricts value faults to a subset of "f" processes
+P_f(f,u,s,r) == Cardinality(AS(u,s,r)) <= f
+
+\* Predicate Synchronous Byzantine: predicate for an synchronous system with
+\* "f" Byzantine faults
+P_sb(f,u,s,r) == Cardinality(SK(u,s,r)) >= (Cardinality(Processes) - f)
+
+\* Predicate Asynchronous Byzantine: predicate for an asynchronous system with
+\* "f" Byzantine faults
+P_ab(f,u,s,r) == /\ \A p \in Processes: Cardinality(HO(u)[p])  >= (Cardinality(Processes) - f) 
+                 /\ Cardinality(AS(u,s,r)) <= f 
+
+(***************************************************************************)
+(* Main Operator: Generates the Pease Set                                  *)
+(***************************************************************************)
+
+\* Constructs all valid reception matrices based on the predicate, set of 
 \* processes and Valid Messages in the Algorithm. This is the main output 
 \* representing all allowed message scenarios under the model's assumptions.    
 
 PeaseSets(Predicate(_)) == 
-    {pu \in [Processes -> FullSet]: Predicate(pu)}
+    {u \in [Processes -> [Processes -> ValidMsgs]]: Predicate(u)}
 
 
                                 

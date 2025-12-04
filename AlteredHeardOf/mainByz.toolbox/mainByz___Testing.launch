@@ -26,7 +26,7 @@
     <booleanAttribute key="modelCorrectnessCheckDeadlock" value="true"/>
     <listAttribute key="modelCorrectnessInvariants"/>
     <listAttribute key="modelCorrectnessProperties"/>
-    <intAttribute key="modelEditorOpenTabs" value="10"/>
+    <intAttribute key="modelEditorOpenTabs" value="0"/>
     <stringAttribute key="modelExpressionEval" value="\*LET Pred(u) == P_alfa(1,u,SI21,0)&#13;&#10;\*IN  n(PeaseSets(Pred))&#13;&#10;AHO(ubiz,SI21,0)"/>
     <stringAttribute key="modelParameterActionConstraint" value=""/>
     <listAttribute key="modelParameterConstants">

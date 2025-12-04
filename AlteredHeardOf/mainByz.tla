@@ -11,7 +11,7 @@
 (*                                                                          *)
 (****************************************************************************)
 
-EXTENDS  BLV
+EXTENDS  BOTR
 
 \*BLV is The Algorithm to be verified, change to the desired algorithm  
 
@@ -80,7 +80,7 @@ Variables == <<State, r>>
 
 INSTANCE PeaseSet WITH ValidMsgs <- ValidMessages(r,Values) 
 
-HW == LET Pred(u) == P_alfa(1,u,State,r)
+PS == LET Pred(u) == P_alpha(1,u,State,r)
       IN  PeaseSets(Pred)
 
 SpecInit == /\ r = 0
@@ -89,8 +89,8 @@ SpecInit == /\ r = 0
 
 SpecNext == /\ r' = (r + 1) % Phases
             /\ State' \in {
-                            [p \in DOMAIN State |-> T(State[p],r,hw[p])]
-                          : hw \in HW}
+                            [p \in DOMAIN State |-> T(State[p],r,u[p])]
+                          : u \in PS}
 
 Spec == /\ SpecInit
         /\ [][SpecNext]_<<Variables>>
@@ -104,7 +104,7 @@ Spec == /\ SpecInit
 (*      Agreement: (Invariant)                                              *)
 (*                                                                          *)
 (*  For any two processes p and q, either one of them has not decided       *) 
-(*  (i.e., its decision "d" is NULL), or both have decided on equal values. *)
+(*  (its decision "d" is NULL), or both have decided on equal values.       *)
 (*                                                                          *)
 (*      Termination: (Temporal property)                                    *)
 (*                                                                          *)
@@ -112,13 +112,14 @@ Spec == /\ SpecInit
 (*  not NULL. This ensures progress is made and the algorithm eventually    *)
 (*  terminates.                                                             *)
 (*                                                                          *)
-(*      Irrevocability: (Temporal property)                                 *)   
+(*      Integrity: (Temporal property)                                      *)   
 (*                                                                          *)
 (*  Once a process has decided, its decision never changes                  *)  
 (*                                                                          *)
-(*      Integrity: (Invariant)                                              *)
+(*      Validity: (Temporal property)                                       *)
 (*                                                                          *)
-(*  Processes decision must be in the set of initial proposed values        *)
+(*  If all processes have the same initial value, this is the only possible *)
+(*  decision value.                                                         *)
 (*                                                                          *)
 (****************************************************************************)
 
@@ -128,8 +129,8 @@ Agreement == \A p,q \in Processes: \/ State[p]["d"] = NULL
 
 Termination == <>(\A p,q \in Processes: State[p]["d"] # NULL )
 
-Irrevocability == \A p \in Processes, v \in Values: [](State[p]["d"] = v => [] (State[p]["d"] = v))
+Integrity == \A p \in Processes, v \in Values: [](State[p]["d"] = v => [] (State[p]["d"] = v))
 
-Integrity == \A v \in Values: ((\A p \in Processes: State[p]["vote"] = v) => [] (\A q \in Processes: State[q]["d"] \in {v,NULL}))
+Validity == \A v \in Values: ((\A p \in Processes: State[p]["vote"] = v) => [] (\A q \in Processes: State[q]["d"] \in {v,NULL}))
 
 =============================================================================
