@@ -21,6 +21,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/BLV.tla</locationURI>
 		</link>
 		<link>
+			<name>BOTR.tla</name>
+			<type>1</type>
+			<location>C:/Users/yuri/Desktop/Mestrado/TLAplus_HeardOf/AlteredHeardOf/BOTR.tla</location>
+		</link>
+		<link>
 			<name>ExtendedSequences.tla</name>
 			<type>1</type>
 			<location>C:/Users/yuri/Desktop/Mestrado/TLAplus_HeardOf/AlteredHeardOf/ExtendedSequences.tla</location>
