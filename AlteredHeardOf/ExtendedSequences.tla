@@ -5,7 +5,7 @@ LOCAL INSTANCE FiniteSets
 LOCAL INSTANCE Sequences
 LOCAL INSTANCE TLC
 
-NULL == TRUE
+CONSTANT NULL
 
 n(set) == Cardinality(set)
 
@@ -88,5 +88,5 @@ min(msg) == LET Bag == BagIt(msg,"v")
 
 =============================================================================
 \* Modification History
-\* Last modified Thu Sep 25 13:54:31 BRT 2025 by yuri
+\* Last modified Thu Dec 11 22:51:12 BRT 2025 by yuri
 \* Created Fri Oct 13 17:38:39 BRT 2023 by yuri

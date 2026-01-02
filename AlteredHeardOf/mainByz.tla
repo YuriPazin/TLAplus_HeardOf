@@ -53,8 +53,8 @@ CONSTANTS Processes , Values
 (*                                                                          *)
 (****************************************************************************)
 
-VARIABLES State, r 
-Variables == <<State, r>>
+VARIABLES State, r, u 
+Variables == <<State, r,u>>
 
 (****************************************************************************)
 (*                                                                          *)
@@ -78,20 +78,36 @@ Variables == <<State, r>>
 (*                                                                          *)
 (****************************************************************************)
 
-INSTANCE PeaseSet WITH ValidMsgs <- ValidMessages(r,Values) 
+FullPeaseSet == [ ro \in {0,1} |->
+                        [Processes -> 
+                        [Processes -> 
+                        ValidMessages(ro,Values)]]]
 
-PS == LET Pred(u) == P_alpha(1,u,State,r)
-      IN  PeaseSets(Pred)
+\* Heard-Of: The set of processes each process received messages this round.
+HO(mu) == [p \in Processes |-> {q \in Processes: mu[p][q] # NULL }]
+
+\* Safe Heard-Of: The set of processes each process recieved messages acording to S
+SHO(mu) == [p \in Processes |-> {q \in Processes: mu[p][q] = S(State[q],r)}]
+
+\* Altered Heard-Of: The set of processes each process recieved a corrupted message
+AHO(mu) == [p \in Processes |-> HO(mu)[p] \ SHO(mu)[p]]
+
+
+PeaseSets == {mu \in FullPeaseSet[r]:
+              \A p \in Processes: Cardinality(AHO(mu)[p]) <= 1 }
+
 
 SpecInit == /\ r = 0
             /\ State \in Init(Processes,Values) 
+            /\ u \in PeaseSets 
+            
             
 
 SpecNext == /\ r' = (r + 1) % Phases
-            /\ State' \in {
-                            [p \in DOMAIN State |-> T(State[p],r,u[p])]
-                          : u \in PS}
-
+            /\ State' = [p \in DOMAIN State |-> T(State[p],r,u[p])]
+            /\ u' \in PeaseSets
+            
+            
 Spec == /\ SpecInit
         /\ [][SpecNext]_<<Variables>>
         /\ WF_<<Variables>>(SpecNext)
@@ -123,14 +139,14 @@ Spec == /\ SpecInit
 (*                                                                          *)
 (****************************************************************************)
 
-Agreement == \A p,q \in Processes: \/ State[p]["d"] = NULL 
-                                   \/ State[q]["d"] = NULL 
-                                   \/ State[p]["d"] = State[q]["d"] 
+Agreement == \A p,q \in Processes: \/ State[p].d = NULL 
+                                   \/ State[q].d = NULL 
+                                   \/ State[p].d = State[q].d 
 
-Termination == <>(\A p,q \in Processes: State[p]["d"] # NULL )
+Termination == <>(\A p,q \in Processes: State[p].d # NULL )
 
-Integrity == \A p \in Processes, v \in Values: [](State[p]["d"] = v => [] (State[p]["d"] = v))
+Integrity == \A p \in Processes, v \in Values: [](State[p].d = v => [] (State[p].d = v))
 
-Validity == \A v \in Values: ((\A p \in Processes: State[p]["vote"] = v) => [] (\A q \in Processes: State[q]["d"] \in {v,NULL}))
+Validity == \A v \in Values: ((\A p \in Processes: State[p].v = v) => [] (\A q \in Processes: State[q].d \in {v,NULL}))
 
 =============================================================================

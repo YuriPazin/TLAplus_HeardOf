@@ -15,11 +15,12 @@
 
 LOCAL INSTANCE Integers
 LOCAL INSTANCE FiniteSets
-LOCAL INSTANCE ExtendedSequences
+
 LOCAL INSTANCE TLC
 
-CONSTANT Processes , ValidMsgs ,  S(_,_)
+CONSTANT Processes , ValidMsgs ,  S(_,_) , NULL
 
+LOCAL INSTANCE ExtendedSequences
 (***************************************************************************)
 (* Auxiliary Definitions                                                   *)
 (***************************************************************************)
@@ -78,6 +79,37 @@ P_ab(f,u,s,r) == /\ \A p \in Processes: Cardinality(HO(u)[p])  >= (Cardinality(P
 
 PeaseSets(Predicate(_)) == 
     {u \in [Processes -> [Processes -> ValidMsgs]]: Predicate(u)}
+
+
+(***************************************************************************)
+(* Functions for the Operator                                              *)
+(***************************************************************************)
+
+\* Builds an injective mapping from the domain of a function e to the
+\* values produced by f[e]. Used in permutation generation.
+Enum(e, f) ==
+  [DOMAIN (e :> f[e]) -> f[e]]
+
+\*Generates all possible permutations of values within the structure P.
+Perm(P) ==
+  {Enum(p, P) : p \in DOMAIN P}
+
+\* Recursively joins a set of sets of sets. This is useful for creating
+\* Cartesian products or flattening layered structures.
+RECURSIVE Join(_)
+
+\* Auxiliary function for Join: joins a single element p with all
+\* elements of Q. Used in the recursive construction
+JoinFunc(P, Q) ==
+    {{ p @@ q  : q \in Q } : p \in P}  
+
+\* Recursively joins all sets in the input set P into a union of
+\* combinations. Used to generate all valid transmission vectors.
+Join(P) ==
+  LET xi == CHOOSE x \in P: TRUE
+  IN IF Cardinality(P) > 1
+     THEN UNION JoinFunc(xi, Join(P \ {xi}))
+     ELSE xi
 
 
                                 

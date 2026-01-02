@@ -11,7 +11,7 @@
 (*                                                                          *)
 (****************************************************************************)
 
-EXTENDS  BLV
+EXTENDS  BOTR
 
 \*BLV is The Algorithm to be verified, change to the desired algorithm  
 
@@ -53,8 +53,8 @@ CONSTANTS Processes , Values
 (*                                                                          *)
 (****************************************************************************)
 
-VARIABLES State, r 
-Variables == <<State, r>>
+VARIABLES State, r, u 
+Variables == <<State, r,u>>
 
 (****************************************************************************)
 (*                                                                          *)
@@ -78,20 +78,36 @@ Variables == <<State, r>>
 (*                                                                          *)
 (****************************************************************************)
 
-INSTANCE PeaseSet WITH ValidMsgs <- ValidMessages(r,Values) 
+FullPeaseSet == [ ro \in {0,1} |->
+                        [Processes -> 
+                        [Processes -> 
+                        ValidMessages(ro,Values)]]]
 
-HW == LET Pred(u) == P_alfa(1,u,State,r)
-      IN  PeaseSets(Pred)
+\* Heard-Of: The set of processes each process received messages this round.
+HO(mu) == [p \in Processes |-> {q \in Processes: mu[p][q] # NULL }]
+
+\* Safe Heard-Of: The set of processes each process recieved messages acording to S
+SHO(mu) == [p \in Processes |-> {q \in Processes: mu[p][q] = S(State[q],r)}]
+
+\* Altered Heard-Of: The set of processes each process recieved a corrupted message
+AHO(mu) == [p \in Processes |-> HO(mu)[p] \ SHO(mu)[p]]
+
+
+PeaseSets == {mu \in FullPeaseSet[r]:
+              \A p \in Processes: Cardinality(AHO(mu)[p]) <= 1 }
+
 
 SpecInit == /\ r = 0
-            /\ State \in Init(Processes,Values)
+            /\ State \in Init(Processes,Values) 
+            /\ u \in PeaseSets 
+            
             
 
 SpecNext == /\ r' = (r + 1) % Phases
-            /\ State' \in {
-                            [p \in DOMAIN State |-> T(State[p],r,hw[p])]
-                          : hw \in HW}
-
+            /\ State' = [p \in DOMAIN State |-> T(State[p],r,u[p])]
+            /\ u' \in PeaseSets
+            
+            
 Spec == /\ SpecInit
         /\ [][SpecNext]_<<Variables>>
         /\ WF_<<Variables>>(SpecNext)
@@ -104,7 +120,7 @@ Spec == /\ SpecInit
 (*      Agreement: (Invariant)                                              *)
 (*                                                                          *)
 (*  For any two processes p and q, either one of them has not decided       *) 
-(*  (i.e., its decision "d" is NULL), or both have decided on equal values. *)
+(*  (its decision "d" is NULL), or both have decided on equal values.       *)
 (*                                                                          *)
 (*      Termination: (Temporal property)                                    *)
 (*                                                                          *)
@@ -112,25 +128,25 @@ Spec == /\ SpecInit
 (*  not NULL. This ensures progress is made and the algorithm eventually    *)
 (*  terminates.                                                             *)
 (*                                                                          *)
-(*      Irrevocability: (Temporal property)                                 *)   
+(*      Integrity: (Temporal property)                                      *)   
 (*                                                                          *)
 (*  Once a process has decided, its decision never changes                  *)  
 (*                                                                          *)
-(*      Integrity: (Invariant)                                              *)
+(*      Validity: (Temporal property)                                       *)
 (*                                                                          *)
-(*  Processes decision must be in the set of initial proposed values        *)
+(*  If all processes have the same initial value, this is the only possible *)
+(*  decision value.                                                         *)
 (*                                                                          *)
 (****************************************************************************)
 
-Agreement == \A p,q \in Processes: \/ State[p]["d"] = NULL 
-                                   \/ State[q]["d"] = NULL 
-                                   \/ State[p]["d"] = State[q]["d"] 
+Agreement == \A p,q \in Processes: \/ State[p].d = NULL 
+                                   \/ State[q].d = NULL 
+                                   \/ State[p].d = State[q].d 
 
-Termination == <>(\A p,q \in Processes: State[p]["d"] # NULL )
+Termination == <>(\A p,q \in Processes: State[p].d # NULL )
 
-Irrevocability == \A p \in Processes : [][State[p]["d"] = NULL]_<<State[p]["d"]>>
+Integrity == \A p \in Processes, v \in Values: [](State[p].d = v => [] (State[p].d = v))
 
-Integrity == \A p \in Processes : State[p]["d"] \in Values \cup {NULL} 
-
+Validity == \A v \in Values: ((\A p \in Processes: State[p].v = v) => [] (\A q \in Processes: State[q].d \in {v,NULL}))
 
 =============================================================================
